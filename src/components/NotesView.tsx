@@ -97,7 +97,7 @@ export const NotesView: React.FC = () => {
 
         <button
           onClick={() => setShowAddModal(true)}
-          className="flex items-center gap-1.5 px-4 py-2 text-xs font-bold text-white bg-gradient-to-r from-[#b38e44] to-[#96742e] rounded-xl shadow-sm hover:shadow-md transition"
+          className="flex items-center gap-1.5 px-4 py-2 text-xs font-bold text-white bg-gradient-to-r from-indigo-600 to-violet-600 hover:from-indigo-700 hover:to-violet-700 rounded-xl shadow-sm hover:shadow-md transition cursor-pointer"
         >
           <Plus className="w-4 h-4" />
           <span>Nova Anotação</span>
@@ -112,7 +112,7 @@ export const NotesView: React.FC = () => {
           placeholder="Pesquisar por mnemônico ou assunto..."
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
-          className="w-full pl-9 pr-3 py-2 text-xs rounded-xl border border-gray-200 bg-white focus:outline-none focus:ring-2 focus:ring-[#b38e44]"
+          className="w-full pl-9 pr-3 py-2 text-xs rounded-xl border border-gray-200 bg-white focus:outline-none focus:ring-2 focus:ring-indigo-500"
         />
       </div>
 
@@ -222,7 +222,7 @@ export const NotesView: React.FC = () => {
                 </button>
                 <button
                   type="submit"
-                  className="px-5 py-2 text-xs font-bold text-white bg-[#b38e44] hover:bg-[#96742e] rounded-xl"
+                  className="px-5 py-2 text-xs font-bold text-white bg-indigo-600 hover:bg-indigo-700 rounded-xl shadow-xs hover:shadow-sm transition cursor-pointer"
                 >
                   Salvar
                 </button>

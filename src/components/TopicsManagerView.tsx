@@ -106,11 +106,11 @@ export const TopicsManagerView: React.FC = () => {
               placeholder="Inserir novo assunto do edital para esta matéria..."
               value={newTopicTitle}
               onChange={(e) => setNewTopicTitle(e.target.value)}
-              className="flex-1 text-xs p-2.5 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#b38e44]"
+              className="flex-1 text-xs p-2.5 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-500"
             />
             <button
               type="submit"
-              className="px-4 py-2.5 bg-[#b38e44] text-white text-xs font-bold rounded-xl hover:bg-[#96742e] transition"
+              className="px-4 py-2.5 bg-indigo-600 hover:bg-indigo-700 text-white text-xs font-bold rounded-xl shadow-xs hover:shadow-sm transition cursor-pointer"
             >
               + Adicionar Assunto
             </button>

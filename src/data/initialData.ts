@@ -12,7 +12,7 @@ export const initialSubjects: Subject[] = [
     id: 'ces-inss',
     code: 'CES.INSS.TS',
     name: 'Conhecimentos Específicos',
-    color: '#b38e44',
+    color: '#4f46e5',
     weeklyTargetHours: 8,
     weight: 3,
     topics: [

@@ -66,7 +66,7 @@ export const QuickRegisterView: React.FC = () => {
   return (
     <div className="p-4 sm:p-6 lg:p-8 space-y-6 max-w-3xl mx-auto">
       <div className="flex items-center gap-2">
-        <div className="p-2 bg-[#b38e44]/10 rounded-xl text-[#b38e44]">
+        <div className="p-2 bg-indigo-50 rounded-xl text-indigo-600">
           <PlusCircle className="w-5 h-5" />
         </div>
         <div>
@@ -89,7 +89,7 @@ export const QuickRegisterView: React.FC = () => {
               <select
                 value={subjectId}
                 onChange={(e) => setSubjectId(e.target.value)}
-                className="w-full text-xs p-2.5 rounded-xl border border-gray-300 focus:ring-2 focus:ring-[#b38e44]"
+                className="w-full text-xs p-2.5 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500"
               >
                 {subjects.map(s => (
                   <option key={s.id} value={s.id}>{s.code} - {s.name}</option>
@@ -107,7 +107,7 @@ export const QuickRegisterView: React.FC = () => {
                 value={topicTitle}
                 onChange={(e) => setTopicTitle(e.target.value)}
                 placeholder="Ex: Resolução de questões de Direito Constitucional"
-                className="w-full text-xs p-2.5 rounded-xl border border-gray-300 focus:ring-2 focus:ring-[#b38e44]"
+                className="w-full text-xs p-2.5 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500"
               />
             </div>
           </div>
@@ -179,9 +179,9 @@ export const QuickRegisterView: React.FC = () => {
                   key={d}
                   type="button"
                   onClick={() => setDifficulty(d)}
-                  className={`py-2 text-xs font-semibold rounded-lg border transition ${
+                  className={`py-2 text-xs font-semibold rounded-lg border transition cursor-pointer ${
                     difficulty === d
-                      ? 'bg-[#b38e44] text-white border-[#b38e44]'
+                      ? 'bg-indigo-600 text-white border-indigo-600 shadow-xs'
                       : 'bg-white text-gray-700 border-gray-200 hover:bg-gray-50'
                   }`}
                 >
@@ -200,7 +200,7 @@ export const QuickRegisterView: React.FC = () => {
               value={notes}
               onChange={(e) => setNotes(e.target.value)}
               placeholder="Ex: Dúvida tirada na aula 4, ler artigo 37 novamente..."
-              className="w-full text-xs p-2.5 rounded-xl border border-gray-300"
+              className="w-full text-xs p-2.5 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500"
             />
           </div>
 
@@ -211,7 +211,7 @@ export const QuickRegisterView: React.FC = () => {
                 type="checkbox"
                 checked={sendToErrorNotebook}
                 onChange={(e) => setSendToErrorNotebook(e.target.checked)}
-                className="w-4 h-4 rounded text-[#b38e44] focus:ring-[#b38e44]"
+                className="w-4 h-4 rounded text-indigo-600 focus:ring-indigo-500"
               />
               <span>Desejo registrar uma questão errada no Caderno de Erros agora</span>
             </label>
@@ -225,7 +225,7 @@ export const QuickRegisterView: React.FC = () => {
                     value={errorStatement}
                     onChange={(e) => setErrorStatement(e.target.value)}
                     placeholder="Enunciado ou pegadinha..."
-                    className="w-full text-xs p-2 bg-white rounded border border-gray-200"
+                    className="w-full text-xs p-2 bg-white rounded border border-gray-200 focus:outline-none focus:ring-1 focus:ring-indigo-500"
                   />
                 </div>
                 <div>
@@ -235,7 +235,7 @@ export const QuickRegisterView: React.FC = () => {
                     value={correctOption}
                     onChange={(e) => setCorrectOption(e.target.value)}
                     placeholder="Gabarito oficial..."
-                    className="w-full text-xs p-2 bg-white rounded border border-gray-200"
+                    className="w-full text-xs p-2 bg-white rounded border border-gray-200 focus:outline-none focus:ring-1 focus:ring-indigo-500"
                   />
                 </div>
                 <div>
@@ -245,7 +245,7 @@ export const QuickRegisterView: React.FC = () => {
                     value={explanation}
                     onChange={(e) => setExplanation(e.target.value)}
                     placeholder="Anotação de revisão..."
-                    className="w-full text-xs p-2 bg-white rounded border border-gray-200"
+                    className="w-full text-xs p-2 bg-white rounded border border-gray-200 focus:outline-none focus:ring-1 focus:ring-indigo-500"
                   />
                 </div>
               </div>
@@ -256,13 +256,13 @@ export const QuickRegisterView: React.FC = () => {
             <button
               type="button"
               onClick={() => setActiveView('painel')}
-              className="px-4 py-2 text-xs font-semibold text-gray-600 hover:text-gray-900"
+              className="px-4 py-2 text-xs font-semibold text-gray-600 hover:text-gray-900 cursor-pointer"
             >
               Cancelar
             </button>
             <button
               type="submit"
-              className="flex items-center gap-1.5 px-6 py-2.5 text-xs font-bold text-white bg-gradient-to-r from-[#b38e44] to-[#96742e] rounded-xl shadow-sm hover:shadow-md transition"
+              className="flex items-center gap-1.5 px-6 py-2.5 text-xs font-bold text-white bg-gradient-to-r from-indigo-600 to-violet-600 hover:from-indigo-700 hover:to-violet-700 rounded-xl shadow-sm hover:shadow-md transition cursor-pointer"
             >
               <CheckCircle2 className="w-4 h-4" />
               <span>Salvar Registro de Estudo</span>

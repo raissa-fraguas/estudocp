@@ -52,7 +52,7 @@ export const RescheduleView: React.FC = () => {
         <h3 className="font-bold text-gray-900 text-sm">Opções de Reorganização do Cronograma</h3>
 
         <div className="space-y-3">
-          <div className="p-4 rounded-xl border border-gray-200 hover:border-[#b38e44] transition flex items-start justify-between gap-4">
+          <div className="p-4 rounded-xl border border-gray-200 hover:border-indigo-400 transition flex items-start justify-between gap-4">
             <div>
               <h4 className="font-bold text-gray-900 text-xs">Redistribuição Equilibrada</h4>
               <p className="text-xs text-gray-500 mt-0.5">
@@ -61,13 +61,13 @@ export const RescheduleView: React.FC = () => {
             </div>
             <button
               onClick={handleSmartReschedule}
-              className="px-4 py-2 bg-[#b38e44] text-white text-xs font-bold rounded-lg hover:bg-[#96742e] shrink-0"
+              className="px-4 py-2 bg-indigo-600 hover:bg-indigo-700 text-white text-xs font-bold rounded-lg shadow-xs hover:shadow-sm shrink-0 cursor-pointer transition"
             >
               Executar Ajuste
             </button>
           </div>
 
-          <div className="p-4 rounded-xl border border-gray-200 hover:border-[#b38e44] transition flex items-start justify-between gap-4">
+          <div className="p-4 rounded-xl border border-gray-200 hover:border-indigo-400 transition flex items-start justify-between gap-4">
             <div>
               <h4 className="font-bold text-gray-900 text-xs">Mover para o Fim de Semana</h4>
               <p className="text-xs text-gray-500 mt-0.5">
@@ -76,7 +76,7 @@ export const RescheduleView: React.FC = () => {
             </div>
             <button
               onClick={handleSmartReschedule}
-              className="px-4 py-2 bg-gray-900 text-white text-xs font-bold rounded-lg hover:bg-black shrink-0"
+              className="px-4 py-2 bg-gray-900 hover:bg-black text-white text-xs font-bold rounded-lg shrink-0 cursor-pointer transition"
             >
               Mover para FDS
             </button>

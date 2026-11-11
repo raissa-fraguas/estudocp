@@ -221,7 +221,7 @@ export const StudyProvider: React.FC<{ children: React.ReactNode }> = ({ childre
         particleCount: 50,
         spread: 60,
         origin: { y: 0.7 },
-        colors: ['#b38e44', '#15803d', '#2563eb', '#eab308']
+        colors: ['#6366f1', '#06b6d4', '#10b981', '#f59e0b', '#8b5cf6']
       });
     } catch {
       // ignore

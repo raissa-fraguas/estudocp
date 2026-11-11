@@ -57,14 +57,14 @@ export const DashboardView: React.FC = () => {
           </p>
         </div>
 
-        {/* Tab switcher matching screenshot: Geral, Conteúdo, Desempenho, Questões */}
-        <div className="flex items-center gap-1.5 p-1 bg-gray-200/70 rounded-full text-xs font-semibold self-start sm:self-auto overflow-x-auto max-w-full">
+        {/* Tab switcher: Geral, Conteúdo, Desempenho, Questões */}
+        <div className="flex items-center gap-1.5 p-1 bg-slate-100 rounded-full text-xs font-semibold self-start sm:self-auto overflow-x-auto max-w-full border border-slate-200/60">
           <button
             onClick={() => setActiveTab('geral')}
             className={`flex items-center gap-1.5 px-4 py-2 rounded-full transition-all ${
               activeTab === 'geral'
-                ? 'bg-[#b38e44] text-white shadow-sm'
-                : 'text-gray-600 hover:text-gray-900 hover:bg-gray-200'
+                ? 'bg-indigo-600 text-white shadow-xs font-bold'
+                : 'text-slate-600 hover:text-slate-900 hover:bg-slate-200/70'
             }`}
           >
             <Gauge className="w-3.5 h-3.5" />
@@ -75,8 +75,8 @@ export const DashboardView: React.FC = () => {
             onClick={() => setActiveTab('conteudo')}
             className={`flex items-center gap-1.5 px-4 py-2 rounded-full transition-all ${
               activeTab === 'conteudo'
-                ? 'bg-[#b38e44] text-white shadow-sm'
-                : 'text-gray-600 hover:text-gray-900 hover:bg-gray-200'
+                ? 'bg-indigo-600 text-white shadow-xs font-bold'
+                : 'text-slate-600 hover:text-slate-900 hover:bg-slate-200/70'
             }`}
           >
             <BookOpen className="w-3.5 h-3.5" />
@@ -87,8 +87,8 @@ export const DashboardView: React.FC = () => {
             onClick={() => setActiveTab('desempenho')}
             className={`flex items-center gap-1.5 px-4 py-2 rounded-full transition-all ${
               activeTab === 'desempenho'
-                ? 'bg-[#b38e44] text-white shadow-sm'
-                : 'text-gray-600 hover:text-gray-900 hover:bg-gray-200'
+                ? 'bg-indigo-600 text-white shadow-xs font-bold'
+                : 'text-slate-600 hover:text-slate-900 hover:bg-slate-200/70'
             }`}
           >
             <TrendingUp className="w-3.5 h-3.5" />
@@ -99,8 +99,8 @@ export const DashboardView: React.FC = () => {
             onClick={() => setActiveTab('questoes')}
             className={`flex items-center gap-1.5 px-4 py-2 rounded-full transition-all ${
               activeTab === 'questoes'
-                ? 'bg-[#b38e44] text-white shadow-sm'
-                : 'text-gray-600 hover:text-gray-900 hover:bg-gray-200'
+                ? 'bg-indigo-600 text-white shadow-xs font-bold'
+                : 'text-slate-600 hover:text-slate-900 hover:bg-slate-200/70'
             }`}
           >
             <HelpCircle className="w-3.5 h-3.5" />
@@ -112,14 +112,14 @@ export const DashboardView: React.FC = () => {
       {/* VIEW CONDITIONAL ON ACTIVE TAB */}
       {activeTab === 'geral' && (
         <>
-          {/* Main Grid: Metas Diárias + Bronze cards */}
+          {/* Main Grid: Metas Diárias + Gradient Cards */}
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
             {/* Metas diárias card (7 cols) */}
-            <div className="lg:col-span-7 bg-white rounded-2xl p-6 shadow-sm border border-gray-100 flex flex-col justify-between">
+            <div className="lg:col-span-7 bg-white rounded-2xl p-6 shadow-xs border border-slate-200/80 flex flex-col justify-between">
               <div>
                 <div className="flex items-center justify-between mb-5">
-                  <h2 className="text-lg font-bold text-gray-900">Metas diárias</h2>
-                  <span className="text-xs font-medium text-gray-400">Clique para registrar</span>
+                  <h2 className="text-lg font-bold text-slate-900">Metas diárias</h2>
+                  <span className="text-xs font-medium text-slate-400">Clique para registrar</span>
                 </div>
 
                 {/* List of goals in grid */}
@@ -134,8 +134,8 @@ export const DashboardView: React.FC = () => {
                         onClick={() => setSelectedGoalForModal(goal)}
                         className={`p-3.5 rounded-xl cursor-pointer transition-all duration-200 flex items-center justify-between text-xs font-medium group hover:scale-[1.01] ${
                           isCompleted
-                            ? 'bg-[#0f462c] text-white shadow-sm hover:bg-[#0c3c25]'
-                            : 'bg-[#f3f4f6] text-gray-800 hover:bg-gray-200/90'
+                            ? 'bg-emerald-50 text-emerald-950 border border-emerald-200/90 shadow-2xs hover:bg-emerald-100/80'
+                            : 'bg-slate-50 text-slate-800 border border-slate-200/80 hover:bg-slate-100/90 hover:border-indigo-200'
                         }`}
                       >
                         <div className="min-w-0 pr-2">
@@ -144,19 +144,19 @@ export const DashboardView: React.FC = () => {
                               {sub?.code || 'DISC'} - {sub?.name || 'Disciplina'}
                             </span>
                           </div>
-                          <p className={`text-[10px] truncate mt-0.5 ${isCompleted ? 'text-emerald-200' : 'text-gray-500'}`}>
+                          <p className={`text-[10px] truncate mt-0.5 ${isCompleted ? 'text-emerald-700 font-medium' : 'text-slate-500'}`}>
                             {goal.topicTitle}
                           </p>
                         </div>
 
                         <div className="text-right shrink-0">
-                          <span className={`font-mono text-xs font-bold ${isCompleted ? 'text-emerald-100' : 'text-gray-700'}`}>
+                          <span className={`font-mono text-xs font-bold ${isCompleted ? 'text-emerald-800' : 'text-slate-700'}`}>
                             {formatDuration(goal.targetDurationMinutes)}
                           </span>
                           {isCompleted && (
                             <div className="flex items-center justify-end gap-1 mt-0.5">
-                              <CheckCircle className="w-3 h-3 text-emerald-300" />
-                              <span className="text-[9px] text-emerald-200">Feito</span>
+                              <CheckCircle className="w-3 h-3 text-emerald-600" />
+                              <span className="text-[9px] font-bold text-emerald-700">Feito</span>
                             </div>
                           )}
                         </div>
@@ -167,34 +167,34 @@ export const DashboardView: React.FC = () => {
               </div>
 
               {/* Footer of Metas diárias */}
-              <div className="flex items-center justify-between pt-6 mt-4 border-t border-gray-100">
+              <div className="flex items-center justify-between pt-6 mt-4 border-t border-slate-100">
                 <div className="flex items-center gap-2">
-                  <span className="w-6 h-6 rounded-full bg-[#b38e44] text-white font-bold text-xs flex items-center justify-center">
+                  <span className="w-6 h-6 rounded-full bg-indigo-600 text-white font-bold text-xs flex items-center justify-center shadow-xs">
                     {todayGoals.length}
                   </span>
-                  <span className="text-xs font-medium text-gray-600">
+                  <span className="text-xs font-medium text-slate-600">
                     – total de metas diária
                   </span>
                 </div>
 
                 <button
                   onClick={() => setActiveView('metas')}
-                  className="text-xs font-bold text-gray-800 hover:text-[#b38e44] flex items-center gap-1 transition"
+                  className="text-xs font-bold text-slate-700 hover:text-indigo-600 flex items-center gap-1 transition"
                 >
                   <span>Todas as Metas</span>
-                  <ChevronRight className="w-4 h-4" />
+                  <ChevronRight className="w-4 h-4 text-indigo-500" />
                 </button>
               </div>
             </div>
 
-            {/* Bronze/Gold Gradient Cards (5 cols) */}
+            {/* Pleasant Gradient Cards (5 cols) */}
             <div className="lg:col-span-5 flex flex-col gap-4">
               {/* Progresso Semanal */}
-              <div className="bg-gradient-to-r from-[#b38e44] to-[#99742e] text-white rounded-2xl p-6 shadow-md shadow-[#b38e44]/15 relative overflow-hidden flex flex-col justify-between">
+              <div className="bg-gradient-to-br from-indigo-500 via-indigo-600 to-violet-600 text-white rounded-2xl p-6 shadow-md shadow-indigo-100 relative overflow-hidden flex flex-col justify-between">
                 <div className="flex items-start justify-between">
                   <div>
                     <h3 className="text-lg font-bold">Progresso Semanal</h3>
-                    <p className="text-xs text-amber-100/80 mt-0.5">Percentual de metas concluídas</p>
+                    <p className="text-xs text-indigo-100/90 mt-0.5">Percentual de metas concluídas</p>
                   </div>
                   <div className="w-8 h-8 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center text-white">
                     <ArrowUpRight className="w-4 h-4" />
@@ -214,7 +214,7 @@ export const DashboardView: React.FC = () => {
                     <span className="flex items-center gap-1">
                       {stats.weeklyProgressPercent}% das metas concluídas ↗
                     </span>
-                    <span className="text-amber-100 text-[11px]">
+                    <span className="text-indigo-100 text-[11px]">
                       {stats.dailyCompletedGoalsCount} de {todayGoals.length} hoje
                     </span>
                   </div>
@@ -222,11 +222,11 @@ export const DashboardView: React.FC = () => {
               </div>
 
               {/* Progresso Geral */}
-              <div className="bg-gradient-to-r from-[#b38e44] to-[#99742e] text-white rounded-2xl p-6 shadow-md shadow-[#b38e44]/15 relative overflow-hidden flex flex-col justify-between">
+              <div className="bg-gradient-to-br from-teal-600 via-emerald-600 to-emerald-700 text-white rounded-2xl p-6 shadow-md shadow-emerald-100 relative overflow-hidden flex flex-col justify-between">
                 <div className="flex items-start justify-between">
                   <div>
                     <h3 className="text-lg font-bold">Progresso Geral</h3>
-                    <p className="text-xs text-amber-100/80 mt-0.5">Percentual de metas concluídas</p>
+                    <p className="text-xs text-emerald-100/90 mt-0.5">Percentual de metas concluídas</p>
                   </div>
                   <div className="w-8 h-8 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center text-white">
                     <TrendingUp className="w-4 h-4" />
@@ -246,7 +246,7 @@ export const DashboardView: React.FC = () => {
                     <span className="flex items-center gap-1">
                       {stats.generalProgressPercent}% das metas concluídas ↗
                     </span>
-                    <span className="text-amber-100 text-[11px]">
+                    <span className="text-emerald-100 text-[11px]">
                       Edital Verticalizado
                     </span>
                   </div>
@@ -255,93 +255,93 @@ export const DashboardView: React.FC = () => {
             </div>
           </div>
 
-          {/* 3 White KPI Stat Cards matching screenshot: Dias para prova, Horas, Questões */}
+          {/* 3 White KPI Stat Cards: Dias para prova, Horas, Questões */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {/* Dias para prova */}
-            <div className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 flex flex-col justify-between">
-              <div className="flex items-center justify-between text-gray-500">
-                <span className="text-xs font-bold text-gray-700 uppercase tracking-wider">Dias para prova</span>
-                <div className="w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center text-gray-600">
+            <div className="bg-white rounded-2xl p-6 shadow-xs border border-slate-200/80 flex flex-col justify-between">
+              <div className="flex items-center justify-between text-slate-500">
+                <span className="text-xs font-bold text-slate-700 uppercase tracking-wider">Dias para prova</span>
+                <div className="w-8 h-8 rounded-full bg-blue-50 flex items-center justify-center text-blue-600">
                   <Calendar className="w-4 h-4" />
                 </div>
               </div>
               <div className="mt-4">
-                <div className="text-3xl font-extrabold text-gray-900 tracking-tight">
+                <div className="text-3xl font-extrabold text-slate-900 tracking-tight">
                   {stats.daysToExam > 0 ? stats.daysToExam : '0'}
                 </div>
-                <p className="text-[11px] text-gray-400 mt-1">
+                <p className="text-[11px] text-slate-400 mt-1">
                   Data alvo: {examSettings.examDate ? new Date(examSettings.examDate).toLocaleDateString('pt-BR') : 'Não definida'}
                 </p>
               </div>
             </div>
 
             {/* Horas */}
-            <div className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 flex flex-col justify-between">
-              <div className="flex items-center justify-between text-gray-500">
-                <span className="text-xs font-bold text-gray-700 uppercase tracking-wider">Horas</span>
-                <div className="w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center text-gray-600">
+            <div className="bg-white rounded-2xl p-6 shadow-xs border border-slate-200/80 flex flex-col justify-between">
+              <div className="flex items-center justify-between text-slate-500">
+                <span className="text-xs font-bold text-slate-700 uppercase tracking-wider">Horas</span>
+                <div className="w-8 h-8 rounded-full bg-indigo-50 flex items-center justify-center text-indigo-600">
                   <Clock className="w-4 h-4" />
                 </div>
               </div>
               <div className="mt-4">
-                <div className="text-3xl font-extrabold text-gray-900 tracking-tight font-mono">
+                <div className="text-3xl font-extrabold text-slate-900 tracking-tight font-mono">
                   {stats.totalHoursFormatted}
                 </div>
-                <p className="text-[11px] text-gray-400 mt-1">
+                <p className="text-[11px] text-slate-400 mt-1">
                   Tempo total líquido acumulado
                 </p>
               </div>
             </div>
 
             {/* Questões */}
-            <div className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 flex flex-col justify-between">
-              <div className="flex items-center justify-between text-gray-500">
-                <span className="text-xs font-bold text-gray-700 uppercase tracking-wider">Questões</span>
-                <div className="w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center text-gray-600">
+            <div className="bg-white rounded-2xl p-6 shadow-xs border border-slate-200/80 flex flex-col justify-between">
+              <div className="flex items-center justify-between text-slate-500">
+                <span className="text-xs font-bold text-slate-700 uppercase tracking-wider">Questões</span>
+                <div className="w-8 h-8 rounded-full bg-emerald-50 flex items-center justify-center text-emerald-600">
                   <HelpCircle className="w-4 h-4" />
                 </div>
               </div>
               <div className="mt-4">
-                <div className="text-3xl font-extrabold text-gray-900 tracking-tight">
+                <div className="text-3xl font-extrabold text-slate-900 tracking-tight">
                   {stats.totalQuestions.toLocaleString('pt-BR')}
                 </div>
-                <p className="text-[11px] text-gray-400 mt-1">
+                <p className="text-[11px] text-slate-400 mt-1">
                   {stats.overallAccuracyRate}% de taxa média de acertos
                 </p>
               </div>
             </div>
           </div>
 
-          {/* Bottom Charts matching screenshot: Progresso por Conteúdo & Desempenho por Questões */}
+          {/* Bottom Charts: Progresso por Conteúdo & Desempenho por Questões */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
             {/* Progresso por Conteúdo */}
-            <div className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100">
+            <div className="bg-white rounded-2xl p-6 shadow-xs border border-slate-200/80">
               <div className="flex items-center justify-between mb-2">
                 <div className="flex items-center gap-1.5">
-                  <h3 className="font-bold text-gray-900 text-sm">Progresso por Conteúdo</h3>
-                  <Info className="w-3.5 h-3.5 text-gray-400" />
+                  <h3 className="font-bold text-slate-900 text-sm">Progresso por Conteúdo</h3>
+                  <Info className="w-3.5 h-3.5 text-slate-400" />
                 </div>
-                <span className="text-[11px] text-gray-400 font-medium">Assuntos finalizados</span>
+                <span className="text-[11px] text-slate-400 font-medium">Assuntos finalizados</span>
               </div>
 
-              <div className="flex items-center gap-2 mb-4 text-[11px] text-gray-500">
-                <span className="w-2.5 h-2.5 rounded-full bg-[#b38e44]"></span>
+              <div className="flex items-center gap-2 mb-4 text-[11px] text-slate-500">
+                <span className="w-2.5 h-2.5 rounded-full bg-indigo-600"></span>
                 <span>Conteúdo</span>
               </div>
 
-              {/* Horizontal progress bars with gold gradients */}
+              {/* Horizontal progress bars with indigo gradient */}
               <div className="space-y-4">
                 {stats.subjectProgressList.map((item) => (
                   <div key={item.id} className="space-y-1">
                     <div className="flex items-center justify-between text-xs">
-                      <span className="font-medium text-gray-700 truncate max-w-[240px]">
+                      <span className="font-medium text-slate-700 truncate max-w-[240px]">
                         {item.code} - {item.name}
                       </span>
-                      <span className="font-bold text-gray-900 font-mono">{item.percentCompleted}%</span>
+                      <span className="font-bold text-slate-900 font-mono">{item.percentCompleted}%</span>
                     </div>
-                    <div className="w-full bg-gray-100 rounded-full h-3 overflow-hidden">
+                    <div className="w-full bg-slate-100 rounded-full h-2.5 overflow-hidden">
                       <div
-                        className="bg-gradient-to-r from-[#caa658] to-[#b38e44] h-full rounded-full transition-all duration-500"
+                        className="bg-gradient-to-r from-indigo-500 to-violet-600 h-full rounded-full transition-all duration-500"
                         style={{ width: `${Math.max(4, item.percentCompleted)}%` }}
                       />
                     </div>
@@ -351,33 +351,33 @@ export const DashboardView: React.FC = () => {
             </div>
 
             {/* Desempenho por Questões */}
-            <div className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100">
+            <div className="bg-white rounded-2xl p-6 shadow-xs border border-slate-200/80">
               <div className="flex items-center justify-between mb-2">
                 <div className="flex items-center gap-1.5">
-                  <h3 className="font-bold text-gray-900 text-sm">Desempenho por Questões</h3>
-                  <Info className="w-3.5 h-3.5 text-gray-400" />
+                  <h3 className="font-bold text-slate-900 text-sm">Desempenho por Questões</h3>
+                  <Info className="w-3.5 h-3.5 text-slate-400" />
                 </div>
-                <span className="text-[11px] text-gray-400 font-medium">% Acertos em simulados</span>
+                <span className="text-[11px] text-slate-400 font-medium">% Acertos em simulados</span>
               </div>
 
-              <div className="flex items-center gap-2 mb-4 text-[11px] text-gray-500">
-                <span className="w-2.5 h-2.5 rounded-full bg-[#b38e44]"></span>
+              <div className="flex items-center gap-2 mb-4 text-[11px] text-slate-500">
+                <span className="w-2.5 h-2.5 rounded-full bg-emerald-600"></span>
                 <span>Questão</span>
               </div>
 
-              {/* Horizontal accuracy bars */}
+              {/* Horizontal accuracy bars with emerald gradient */}
               <div className="space-y-4">
                 {stats.subjectQuestionsPerformanceList.map((item) => (
                   <div key={item.id} className="space-y-1">
                     <div className="flex items-center justify-between text-xs">
-                      <span className="font-medium text-gray-700 truncate max-w-[240px]">
+                      <span className="font-medium text-slate-700 truncate max-w-[240px]">
                         {item.code} - {item.name}
                       </span>
-                      <span className="font-bold text-gray-900 font-mono">{item.accuracyPercent}%</span>
+                      <span className="font-bold text-slate-900 font-mono">{item.accuracyPercent}%</span>
                     </div>
-                    <div className="w-full bg-gray-100 rounded-full h-3 overflow-hidden">
+                    <div className="w-full bg-slate-100 rounded-full h-2.5 overflow-hidden">
                       <div
-                        className="bg-gradient-to-r from-[#caa658] to-[#b38e44] h-full rounded-full transition-all duration-500"
+                        className="bg-gradient-to-r from-emerald-500 to-teal-600 h-full rounded-full transition-all duration-500"
                         style={{ width: `${Math.max(5, item.accuracyPercent)}%` }}
                       />
                     </div>
@@ -391,15 +391,15 @@ export const DashboardView: React.FC = () => {
 
       {/* TAB: CONTEÚDO */}
       {activeTab === 'conteudo' && (
-        <div className="bg-white rounded-2xl p-6 border border-gray-100 shadow-sm space-y-6">
-          <div className="flex items-center justify-between border-b pb-4">
+        <div className="bg-white rounded-2xl p-6 border border-slate-200/80 shadow-xs space-y-6">
+          <div className="flex items-center justify-between border-b border-slate-100 pb-4">
             <div>
-              <h2 className="text-lg font-bold text-gray-900">Detalhamento de Conteúdo e Edital</h2>
-              <p className="text-xs text-gray-500">Avanço teórico em cada disciplina do concurso</p>
+              <h2 className="text-lg font-bold text-slate-900">Detalhamento de Conteúdo e Edital</h2>
+              <p className="text-xs text-slate-500">Avanço teórico em cada disciplina do concurso</p>
             </div>
             <button
               onClick={() => setActiveView('assuntos')}
-              className="text-xs font-bold text-[#b38e44] hover:underline"
+              className="text-xs font-bold text-indigo-600 hover:text-indigo-800 hover:underline"
             >
               Abrir Edital Verticalizado Completo →
             </button>
@@ -411,18 +411,18 @@ export const DashboardView: React.FC = () => {
               const tot = s.topics.length;
               const p = tot > 0 ? Math.round((comp / tot) * 100) : 0;
               return (
-                <div key={s.id} className="p-4 rounded-xl border border-gray-100 bg-gray-50/50 space-y-3">
+                <div key={s.id} className="p-4 rounded-xl border border-slate-200/80 bg-slate-50/50 space-y-3">
                   <div className="flex items-center justify-between">
-                    <span className="text-xs font-bold px-2 py-0.5 rounded bg-white text-gray-800 border">
+                    <span className="text-xs font-bold px-2 py-0.5 rounded bg-white text-slate-800 border border-slate-200">
                       {s.code}
                     </span>
-                    <span className="text-xs font-extrabold text-[#b38e44]">{p}%</span>
+                    <span className="text-xs font-extrabold text-indigo-600">{p}%</span>
                   </div>
-                  <h3 className="font-bold text-sm text-gray-900">{s.name}</h3>
-                  <div className="w-full bg-gray-200 rounded-full h-2">
-                    <div className="bg-[#b38e44] h-full rounded-full" style={{ width: `${p}%` }} />
+                  <h3 className="font-bold text-sm text-slate-900">{s.name}</h3>
+                  <div className="w-full bg-slate-200 rounded-full h-2 overflow-hidden">
+                    <div className="bg-indigo-600 h-full rounded-full" style={{ width: `${p}%` }} />
                   </div>
-                  <div className="text-[11px] text-gray-500 flex justify-between">
+                  <div className="text-[11px] text-slate-500 flex justify-between">
                     <span>{comp} de {tot} tópicos concluídos</span>
                     <span>Carga: {s.weeklyTargetHours}h/sem</span>
                   </div>
@@ -435,15 +435,15 @@ export const DashboardView: React.FC = () => {
 
       {/* TAB: DESEMPENHO */}
       {activeTab === 'desempenho' && (
-        <div className="bg-white rounded-2xl p-6 border border-gray-100 shadow-sm space-y-6">
-          <div className="flex items-center justify-between border-b pb-4">
+        <div className="bg-white rounded-2xl p-6 border border-slate-200/80 shadow-xs space-y-6">
+          <div className="flex items-center justify-between border-b border-slate-100 pb-4">
             <div>
-              <h2 className="text-lg font-bold text-gray-900">Evolução do Rendimento por Matéria</h2>
-              <p className="text-xs text-gray-500">Taxa de assertividade em questões e horas de dedicação</p>
+              <h2 className="text-lg font-bold text-slate-900">Evolução do Rendimento por Matéria</h2>
+              <p className="text-xs text-slate-500">Taxa de assertividade em questões e horas de dedicação</p>
             </div>
             <button
               onClick={() => setActiveView('caderno-erros')}
-              className="text-xs font-bold text-[#b38e44] hover:underline"
+              className="text-xs font-bold text-indigo-600 hover:text-indigo-800 hover:underline"
             >
               Ver Caderno de Erros →
             </button>
@@ -451,17 +451,17 @@ export const DashboardView: React.FC = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div className="space-y-4">
-              <h3 className="text-xs font-bold uppercase text-gray-600">Taxa de Acerto por Disciplina</h3>
+              <h3 className="text-xs font-bold uppercase text-slate-500">Taxa de Acerto por Disciplina</h3>
               {stats.subjectQuestionsPerformanceList.map(item => (
-                <div key={item.id} className="p-3 bg-gray-50 rounded-xl space-y-1.5">
+                <div key={item.id} className="p-3 bg-slate-50 rounded-xl space-y-1.5 border border-slate-200/60">
                   <div className="flex items-center justify-between text-xs">
-                    <span className="font-bold text-gray-800">{item.code} - {item.name}</span>
-                    <span className="font-mono font-extrabold text-[#b38e44]">{item.accuracyPercent}%</span>
+                    <span className="font-bold text-slate-800">{item.code} - {item.name}</span>
+                    <span className="font-mono font-extrabold text-indigo-600">{item.accuracyPercent}%</span>
                   </div>
-                  <div className="w-full bg-gray-200 rounded-full h-2.5">
-                    <div className="bg-emerald-600 h-full rounded-full" style={{ width: `${item.accuracyPercent}%` }} />
+                  <div className="w-full bg-slate-200 rounded-full h-2.5 overflow-hidden">
+                    <div className="bg-emerald-500 h-full rounded-full" style={{ width: `${item.accuracyPercent}%` }} />
                   </div>
-                  <div className="flex justify-between text-[10px] text-gray-500">
+                  <div className="flex justify-between text-[10px] text-slate-500">
                     <span>{item.totalAnswered} questões resolvidas</span>
                     <span>{item.accuracyPercent >= 80 ? 'Excelente' : 'Zona de atenção'}</span>
                   </div>
@@ -470,17 +470,17 @@ export const DashboardView: React.FC = () => {
             </div>
 
             <div className="space-y-4">
-              <h3 className="text-xs font-bold uppercase text-gray-600">Horas Líquidas Estudadas</h3>
+              <h3 className="text-xs font-bold uppercase text-slate-500">Horas Líquidas Estudadas</h3>
               {stats.subjectProgressList.map(item => (
-                <div key={item.id} className="p-3 bg-gray-50 rounded-xl space-y-1.5">
+                <div key={item.id} className="p-3 bg-slate-50 rounded-xl space-y-1.5 border border-slate-200/60">
                   <div className="flex items-center justify-between text-xs">
-                    <span className="font-bold text-gray-800">{item.code} - {item.name}</span>
-                    <span className="font-mono font-extrabold text-gray-900">{item.studiedHours}h estudadas</span>
+                    <span className="font-bold text-slate-800">{item.code} - {item.name}</span>
+                    <span className="font-mono font-extrabold text-slate-900">{item.studiedHours}h estudadas</span>
                   </div>
-                  <div className="w-full bg-gray-200 rounded-full h-2.5">
-                    <div className="bg-[#b38e44] h-full rounded-full" style={{ width: `${Math.min(100, (item.studiedHours / item.targetHours) * 100)}%` }} />
+                  <div className="w-full bg-slate-200 rounded-full h-2.5 overflow-hidden">
+                    <div className="bg-indigo-600 h-full rounded-full" style={{ width: `${Math.min(100, (item.studiedHours / item.targetHours) * 100)}%` }} />
                   </div>
-                  <div className="text-[10px] text-gray-500">
+                  <div className="text-[10px] text-slate-500">
                     Meta semanal: {item.targetHours}h
                   </div>
                 </div>
@@ -492,15 +492,15 @@ export const DashboardView: React.FC = () => {
 
       {/* TAB: QUESTÕES */}
       {activeTab === 'questoes' && (
-        <div className="bg-white rounded-2xl p-6 border border-gray-100 shadow-sm space-y-6">
-          <div className="flex items-center justify-between border-b pb-4">
+        <div className="bg-white rounded-2xl p-6 border border-slate-200/80 shadow-xs space-y-6">
+          <div className="flex items-center justify-between border-b border-slate-100 pb-4">
             <div>
-              <h2 className="text-lg font-bold text-gray-900">Histórico de Questões Resolvidas</h2>
-              <p className="text-xs text-gray-500">Acompanhamento de simulados e listas de exercícios</p>
+              <h2 className="text-lg font-bold text-slate-900">Histórico de Questões Resolvidas</h2>
+              <p className="text-xs text-slate-500">Acompanhamento de simulados e listas de exercícios</p>
             </div>
             <button
               onClick={() => setActiveView('registrar')}
-              className="text-xs font-bold px-3 py-1.5 bg-[#b38e44] text-white rounded-lg hover:bg-[#96742e]"
+              className="text-xs font-bold px-3 py-1.5 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 shadow-xs transition"
             >
               + Registrar Nova Lista
             </button>
@@ -593,11 +593,11 @@ export const DashboardView: React.FC = () => {
           </div>
 
           <div className="flex items-center gap-2 mb-4 text-[11px] text-gray-500">
-            <span className="w-2.5 h-2.5 rounded-full bg-[#b38e44]"></span>
-            <span>Conteúdo</span>
+            <span className="w-2.5 h-2.5 rounded-full bg-indigo-600"></span>
+            <span>Conteúdo Coberto</span>
           </div>
 
-          {/* Horizontal progress bars with gold gradients */}
+          {/* Horizontal progress bars with indigo gradients */}
           <div className="space-y-4">
             {stats.subjectProgressList.map((item) => (
               <div key={item.id} className="space-y-1">
@@ -607,9 +607,9 @@ export const DashboardView: React.FC = () => {
                   </span>
                   <span className="font-bold text-gray-900 font-mono">{item.percentCompleted}%</span>
                 </div>
-                <div className="w-full bg-gray-100 rounded-full h-3 overflow-hidden">
+                <div className="w-full bg-gray-100 rounded-full h-2.5 overflow-hidden">
                   <div
-                    className="bg-gradient-to-r from-[#caa658] to-[#b38e44] h-full rounded-full transition-all duration-500"
+                    className="bg-gradient-to-r from-indigo-500 to-violet-600 h-full rounded-full transition-all duration-500"
                     style={{ width: `${Math.max(4, item.percentCompleted)}%` }}
                   />
                 </div>
@@ -629,11 +629,11 @@ export const DashboardView: React.FC = () => {
           </div>
 
           <div className="flex items-center gap-2 mb-4 text-[11px] text-gray-500">
-            <span className="w-2.5 h-2.5 rounded-full bg-[#b38e44]"></span>
-            <span>Questão</span>
+            <span className="w-2.5 h-2.5 rounded-full bg-emerald-600"></span>
+            <span>Taxa de Acerto</span>
           </div>
 
-          {/* Horizontal accuracy bars */}
+          {/* Horizontal accuracy bars with emerald gradients */}
           <div className="space-y-4">
             {stats.subjectQuestionsPerformanceList.map((item) => (
               <div key={item.id} className="space-y-1">
@@ -643,9 +643,9 @@ export const DashboardView: React.FC = () => {
                   </span>
                   <span className="font-bold text-gray-900 font-mono">{item.accuracyPercent}%</span>
                 </div>
-                <div className="w-full bg-gray-100 rounded-full h-3 overflow-hidden">
+                <div className="w-full bg-gray-100 rounded-full h-2.5 overflow-hidden">
                   <div
-                    className="bg-gradient-to-r from-[#caa658] to-[#b38e44] h-full rounded-full transition-all duration-500"
+                    className="bg-gradient-to-r from-emerald-500 to-teal-600 h-full rounded-full transition-all duration-500"
                     style={{ width: `${Math.max(5, item.accuracyPercent)}%` }}
                   />
                 </div>

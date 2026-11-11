@@ -80,12 +80,12 @@ export const Header: React.FC<HeaderProps> = ({ onOpenMobileSidebar }) => {
         <div className="relative">
           <button
             onClick={() => setShowNotifications(!showNotifications)}
-            className="p-1.5 text-gray-500 hover:text-gray-800 hover:bg-gray-100 rounded-full transition relative"
+            className="p-1.5 text-slate-500 hover:text-indigo-600 hover:bg-indigo-50/70 rounded-full transition relative"
             aria-label="Notificações"
           >
-            <Bell className="w-4 h-4 text-[#b38e44]" />
+            <Bell className="w-4 h-4 text-slate-600" />
             {pendingGoalsCount > 0 && (
-              <span className="absolute top-1 right-1 w-2 h-2 bg-[#b38e44] rounded-full ring-2 ring-white"></span>
+              <span className="absolute top-1 right-1 w-2 h-2 bg-indigo-600 rounded-full ring-2 ring-white"></span>
             )}
           </button>
 

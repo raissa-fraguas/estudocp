@@ -130,17 +130,17 @@ export const ErrorNotebookView: React.FC = () => {
             }}
             className={`flex items-center gap-1.5 px-3.5 py-2 text-xs font-bold rounded-xl border transition ${
               isFlashcardMode
-                ? 'bg-amber-600 text-white border-amber-600 shadow-sm'
-                : 'bg-white text-gray-700 border-gray-200 hover:bg-gray-50'
+                ? 'bg-indigo-600 text-white border-indigo-600 shadow-xs'
+                : 'bg-white text-slate-700 border-slate-200 hover:bg-slate-50'
             }`}
           >
-            <Sparkles className="w-3.5 h-3.5" />
+            <Sparkles className="w-3.5 h-3.5 text-amber-500" />
             <span>{isFlashcardMode ? 'Sair do Modo Revisão' : 'Modo Revisão (Cards)'}</span>
           </button>
 
           <button
             onClick={() => setShowAddModal(true)}
-            className="flex items-center gap-1.5 px-4 py-2 text-xs font-bold text-white bg-gradient-to-r from-[#b38e44] to-[#96742e] rounded-xl shadow-sm hover:shadow-md transition"
+            className="flex items-center gap-1.5 px-4 py-2 text-xs font-bold text-white bg-gradient-to-r from-indigo-600 to-violet-600 rounded-xl shadow-xs hover:shadow-md transition"
           >
             <Plus className="w-4 h-4" />
             <span>Adicionar Erro</span>
@@ -150,21 +150,21 @@ export const ErrorNotebookView: React.FC = () => {
 
       {/* KPI Cards: Total, Pendentes, Revisados, Dominados */}
       <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
-        <div className="bg-white p-4 rounded-xl border border-gray-100 shadow-xs">
-          <span className="text-[11px] font-bold text-gray-500 uppercase">Total Cadastrado</span>
-          <div className="text-2xl font-extrabold text-gray-900 mt-1">{errors.length}</div>
-          <span className="text-[10px] text-gray-400">questões mapeadas</span>
+        <div className="bg-white p-4 rounded-xl border border-slate-200/80 shadow-xs">
+          <span className="text-[11px] font-bold text-slate-500 uppercase">Total Cadastrado</span>
+          <div className="text-2xl font-extrabold text-slate-900 mt-1">{errors.length}</div>
+          <span className="text-[10px] text-slate-400">questões mapeadas</span>
         </div>
 
-        <div className="bg-white p-4 rounded-xl border border-amber-200/60 shadow-xs bg-amber-50/20">
-          <span className="text-[11px] font-bold text-amber-700 uppercase">Pendentes de Revisão</span>
-          <div className="text-2xl font-extrabold text-amber-900 mt-1">
+        <div className="bg-white p-4 rounded-xl border border-rose-200/80 shadow-xs bg-rose-50/20">
+          <span className="text-[11px] font-bold text-rose-700 uppercase">Pendentes de Revisão</span>
+          <div className="text-2xl font-extrabold text-rose-900 mt-1">
             {errors.filter(e => e.status === 'pendente').length}
           </div>
-          <span className="text-[10px] text-amber-600">precisam de atenção</span>
+          <span className="text-[10px] text-rose-600">precisam de atenção</span>
         </div>
 
-        <div className="bg-white p-4 rounded-xl border border-blue-200/60 shadow-xs bg-blue-50/20">
+        <div className="bg-white p-4 rounded-xl border border-blue-200/80 shadow-xs bg-blue-50/20">
           <span className="text-[11px] font-bold text-blue-700 uppercase">Em Revisão</span>
           <div className="text-2xl font-extrabold text-blue-900 mt-1">
             {errors.filter(e => e.status === 'revisado').length}
@@ -172,7 +172,7 @@ export const ErrorNotebookView: React.FC = () => {
           <span className="text-[10px] text-blue-600">revisados 1+ vezes</span>
         </div>
 
-        <div className="bg-white p-4 rounded-xl border border-emerald-200/60 shadow-xs bg-emerald-50/20">
+        <div className="bg-white p-4 rounded-xl border border-emerald-200/80 shadow-xs bg-emerald-50/20">
           <span className="text-[11px] font-bold text-emerald-700 uppercase">Dominados / Fixados</span>
           <div className="text-2xl font-extrabold text-emerald-900 mt-1">
             {errors.filter(e => e.status === 'dominado').length}
@@ -182,15 +182,15 @@ export const ErrorNotebookView: React.FC = () => {
       </div>
 
       {/* Diagnóstico Pedagógico: Motivos mais frequentes de erro */}
-      <div className="bg-white p-5 rounded-2xl border border-gray-100 shadow-sm">
+      <div className="bg-white p-5 rounded-2xl border border-slate-200/80 shadow-xs">
         <div className="flex items-center justify-between mb-3">
           <div className="flex items-center gap-2">
-            <BarChart3 className="w-4 h-4 text-[#b38e44]" />
-            <h3 className="text-xs font-bold text-gray-900 uppercase tracking-wider">
+            <BarChart3 className="w-4 h-4 text-indigo-600" />
+            <h3 className="text-xs font-bold text-slate-900 uppercase tracking-wider">
               Diagnóstico: Por que você erra questões?
             </h3>
           </div>
-          <span className="text-[11px] text-gray-400">Identificação de gargalos</span>
+          <span className="text-[11px] text-slate-400">Identificação de gargalos</span>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
@@ -198,14 +198,14 @@ export const ErrorNotebookView: React.FC = () => {
             const count = reasonCounts[reason] || 0;
             const pct = errors.length > 0 ? Math.round((count / errors.length) * 100) : 0;
             return (
-              <div key={reason} className="p-2.5 rounded-lg bg-gray-50 border border-gray-100 text-xs">
-                <div className="flex items-center justify-between font-semibold text-gray-700 mb-1">
+              <div key={reason} className="p-2.5 rounded-lg bg-slate-50 border border-slate-200/80 text-xs">
+                <div className="flex items-center justify-between font-semibold text-slate-700 mb-1">
                   <span className="truncate pr-1 text-[11px]">{reason}</span>
-                  <span className="font-mono font-bold text-[#b38e44]">{count} ({pct}%)</span>
+                  <span className="font-mono font-bold text-indigo-600">{count} ({pct}%)</span>
                 </div>
-                <div className="w-full bg-gray-200 rounded-full h-1.5 overflow-hidden">
+                <div className="w-full bg-slate-200 rounded-full h-1.5 overflow-hidden">
                   <div
-                    className="bg-[#b38e44] h-full rounded-full transition-all"
+                    className="bg-indigo-600 h-full rounded-full transition-all"
                     style={{ width: `${pct}%` }}
                   />
                 </div>
@@ -215,16 +215,16 @@ export const ErrorNotebookView: React.FC = () => {
         </div>
       </div>
 
-      {/* FLASHCARD MODE */}
+      {/* FLASHCARD MODE (Light & Pleasant Card) */}
       {isFlashcardMode && (
-        <div className="bg-gradient-to-br from-gray-900 to-[#1e2329] rounded-2xl p-6 text-white shadow-xl max-w-2xl mx-auto space-y-6">
-          <div className="flex items-center justify-between border-b border-gray-700/80 pb-4">
+        <div className="bg-white rounded-2xl p-6 text-slate-800 border border-slate-200/90 shadow-xl max-w-2xl mx-auto space-y-6">
+          <div className="flex items-center justify-between border-b border-slate-100 pb-4">
             <div className="flex items-center gap-2">
-              <span className="text-xs px-2 py-0.5 rounded bg-[#b38e44] font-bold">
+              <span className="text-xs px-2.5 py-0.5 rounded-full bg-indigo-100 text-indigo-700 font-bold">
                 Card {filteredErrors.length > 0 ? flashcardIndex + 1 : 0} de {filteredErrors.length}
               </span>
               {currentFlashcard && (
-                <span className="text-xs text-gray-300">
+                <span className="text-xs text-slate-600 font-medium">
                   {getSubject(currentFlashcard.subjectId)?.name}
                 </span>
               )}
@@ -237,7 +237,7 @@ export const ErrorNotebookView: React.FC = () => {
                   setRevealFlashcard(false);
                 }}
                 disabled={filteredErrors.length <= 1}
-                className="px-2.5 py-1 text-xs bg-white/10 hover:bg-white/20 rounded disabled:opacity-40"
+                className="px-2.5 py-1 text-xs bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-lg disabled:opacity-40 transition font-medium"
               >
                 Anterior
               </button>
@@ -247,7 +247,7 @@ export const ErrorNotebookView: React.FC = () => {
                   setRevealFlashcard(false);
                 }}
                 disabled={filteredErrors.length <= 1}
-                className="px-2.5 py-1 text-xs bg-white/10 hover:bg-white/20 rounded disabled:opacity-40"
+                className="px-2.5 py-1 text-xs bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-lg disabled:opacity-40 transition font-medium"
               >
                 Próximo
               </button>
@@ -255,24 +255,24 @@ export const ErrorNotebookView: React.FC = () => {
           </div>
 
           {!currentFlashcard ? (
-            <div className="text-center py-8 text-gray-400">
+            <div className="text-center py-8 text-slate-400">
               <p>Nenhuma questão encontrada com os filtros selecionados.</p>
             </div>
           ) : (
             <div className="space-y-4">
               <div>
-                <span className="text-[10px] uppercase font-bold text-amber-400 tracking-wider">
+                <span className="text-[10px] uppercase font-bold text-indigo-600 tracking-wider">
                   Assunto: {currentFlashcard.topicTitle} ({currentFlashcard.institution || 'Banca'} {currentFlashcard.year || ''})
                 </span>
-                <p className="text-sm font-medium text-gray-100 mt-2 leading-relaxed bg-white/5 p-4 rounded-xl border border-white/10">
+                <p className="text-sm font-medium text-slate-900 mt-2 leading-relaxed bg-slate-50 p-4 rounded-xl border border-slate-200/80">
                   {currentFlashcard.statement}
                 </p>
               </div>
 
               {currentFlashcard.markedOption && (
-                <div className="text-xs bg-red-950/40 border border-red-800/50 p-3 rounded-lg text-red-200">
+                <div className="text-xs bg-rose-50 border border-rose-200/80 p-3 rounded-lg text-rose-900">
                   <strong>O que você marcou:</strong> {currentFlashcard.markedOption}
-                  <span className="block text-[10px] text-red-300/80 mt-0.5">
+                  <span className="block text-[10px] text-rose-700 mt-0.5">
                     Motivo do erro: {currentFlashcard.mistakeReason}
                   </span>
                 </div>
@@ -282,25 +282,25 @@ export const ErrorNotebookView: React.FC = () => {
               {!revealFlashcard ? (
                 <button
                   onClick={() => setRevealFlashcard(true)}
-                  className="w-full py-3 bg-[#b38e44] hover:bg-[#a07c34] text-white font-bold rounded-xl text-xs flex items-center justify-center gap-2 transition"
+                  className="w-full py-3 bg-indigo-600 hover:bg-indigo-700 text-white font-bold rounded-xl text-xs flex items-center justify-center gap-2 shadow-xs transition"
                 >
                   <Eye className="w-4 h-4" />
                   <span>Revelar Gabarito Oficial & Anotação de Revisão</span>
                 </button>
               ) : (
                 <div className="space-y-4 animate-in fade-in duration-200">
-                  <div className="bg-emerald-950/50 border border-emerald-700/60 p-4 rounded-xl text-xs space-y-2">
-                    <div className="flex items-center gap-2 text-emerald-400 font-bold">
-                      <CheckCircle className="w-4 h-4" />
+                  <div className="bg-emerald-50 border border-emerald-200/90 p-4 rounded-xl text-xs space-y-2">
+                    <div className="flex items-center gap-2 text-emerald-800 font-bold">
+                      <CheckCircle className="w-4 h-4 text-emerald-600" />
                       <span>Gabarito Oficial:</span>
                     </div>
-                    <p className="text-emerald-100 font-medium text-sm">
+                    <p className="text-emerald-950 font-semibold text-sm">
                       {currentFlashcard.correctOption}
                     </p>
 
-                    <div className="pt-2 border-t border-emerald-800/40 mt-2 text-gray-200">
-                      <strong className="text-amber-300">Explicação / Conceito que você precisa lembrar:</strong>
-                      <p className="mt-1 leading-relaxed text-gray-300">
+                    <div className="pt-2 border-t border-emerald-200/80 mt-2 text-slate-800">
+                      <strong className="text-emerald-900">Explicação / Conceito que você precisa lembrar:</strong>
+                      <p className="mt-1 leading-relaxed text-slate-700">
                         {currentFlashcard.explanation}
                       </p>
                     </div>
@@ -313,7 +313,7 @@ export const ErrorNotebookView: React.FC = () => {
                         setRevealFlashcard(false);
                         setFlashcardIndex(prev => (prev < filteredErrors.length - 1 ? prev + 1 : 0));
                       }}
-                      className="flex-1 py-2 rounded-xl bg-white/10 hover:bg-white/20 text-xs font-semibold"
+                      className="flex-1 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-semibold transition"
                     >
                       Revisar Mais Tarde (Pendente)
                     </button>
@@ -324,7 +324,7 @@ export const ErrorNotebookView: React.FC = () => {
                         setRevealFlashcard(false);
                         setFlashcardIndex(prev => (prev < filteredErrors.length - 1 ? prev + 1 : 0));
                       }}
-                      className="flex-1 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold flex items-center justify-center gap-1.5"
+                      className="flex-1 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold flex items-center justify-center gap-1.5 shadow-xs transition"
                     >
                       <CheckCircle className="w-3.5 h-3.5" />
                       <span>Já Dominei Este Ponto!</span>
@@ -349,7 +349,7 @@ export const ErrorNotebookView: React.FC = () => {
                 placeholder="Pesquisar por palavra-chave, tema ou comentário..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className="w-full pl-9 pr-3 py-2 text-xs rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-[#b38e44]"
+                className="w-full pl-9 pr-3 py-2 text-xs rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-indigo-500"
               />
             </div>
 
@@ -637,7 +637,7 @@ export const ErrorNotebookView: React.FC = () => {
                 </button>
                 <button
                   type="submit"
-                  className="px-5 py-2 text-xs font-bold text-white bg-[#b38e44] hover:bg-[#96742e] rounded-xl shadow-sm transition"
+                  className="px-5 py-2 text-xs font-bold text-white bg-gradient-to-r from-indigo-600 to-violet-600 hover:from-indigo-700 hover:to-violet-700 rounded-xl shadow-sm hover:shadow-md transition cursor-pointer"
                 >
                   Salvar no Caderno
                 </button>

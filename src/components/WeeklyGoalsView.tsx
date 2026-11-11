@@ -120,17 +120,17 @@ export const WeeklyGoalsView: React.FC = () => {
           {/* Export to PDF button */}
           <button
             onClick={exportToPdf}
-            className="flex items-center gap-1.5 px-3.5 py-2 text-xs font-semibold text-gray-700 bg-white hover:bg-gray-50 border border-gray-200 rounded-xl shadow-sm transition"
+            className="flex items-center gap-1.5 px-3.5 py-2 text-xs font-semibold text-gray-700 bg-white hover:bg-gray-50 border border-gray-200 rounded-xl shadow-sm transition cursor-pointer"
             title="Exportar cronograma para PDF"
           >
-            <Printer className="w-3.5 h-3.5 text-[#b38e44]" />
+            <Printer className="w-3.5 h-3.5 text-indigo-600" />
             <span>Exportar PDF</span>
           </button>
 
           {/* New Goal button */}
           <button
             onClick={() => setShowAddModal(true)}
-            className="flex items-center gap-1.5 px-3.5 py-2 text-xs font-bold text-white bg-gradient-to-r from-[#b38e44] to-[#96742e] rounded-xl shadow-sm hover:shadow-md transition"
+            className="flex items-center gap-1.5 px-3.5 py-2 text-xs font-bold text-white bg-indigo-600 hover:bg-indigo-700 rounded-xl shadow-xs transition"
           >
             <Plus className="w-4 h-4" />
             <span>Nova Meta</span>
@@ -140,7 +140,7 @@ export const WeeklyGoalsView: React.FC = () => {
 
       {/* Subject Filter Bar */}
       <div className="flex items-center gap-2 overflow-x-auto pb-2 text-xs font-medium">
-        <span className="text-gray-500 flex items-center gap-1 shrink-0">
+        <span className="text-slate-500 flex items-center gap-1 shrink-0">
           <Filter className="w-3.5 h-3.5" />
           Filtrar:
         </span>
@@ -148,8 +148,8 @@ export const WeeklyGoalsView: React.FC = () => {
           onClick={() => setFilterSubject('all')}
           className={`px-3 py-1 rounded-full whitespace-nowrap transition ${
             filterSubject === 'all'
-              ? 'bg-gray-900 text-white font-bold'
-              : 'bg-white text-gray-600 border border-gray-200 hover:bg-gray-100'
+              ? 'bg-slate-900 text-white font-bold'
+              : 'bg-white text-slate-600 border border-slate-200 hover:bg-slate-100'
           }`}
         >
           Todas as Matérias
@@ -160,8 +160,8 @@ export const WeeklyGoalsView: React.FC = () => {
             onClick={() => setFilterSubject(s.id)}
             className={`px-3 py-1 rounded-full whitespace-nowrap transition flex items-center gap-1.5 ${
               filterSubject === s.id
-                ? 'bg-[#b38e44] text-white font-bold'
-                : 'bg-white text-gray-600 border border-gray-200 hover:bg-gray-100'
+                ? 'bg-indigo-600 text-white font-bold'
+                : 'bg-white text-slate-600 border border-slate-200 hover:bg-slate-100'
             }`}
           >
             <span className="w-2 h-2 rounded-full" style={{ backgroundColor: s.color }} />
@@ -184,31 +184,31 @@ export const WeeklyGoalsView: React.FC = () => {
                 key={day.key}
                 className={`flex flex-col bg-white rounded-2xl border transition-all ${
                   isToday 
-                    ? 'border-[#b38e44]/60 ring-2 ring-[#b38e44]/20 shadow-sm' 
-                    : 'border-gray-200/80 shadow-xs'
+                    ? 'border-indigo-300 ring-2 ring-indigo-100 shadow-xs' 
+                    : 'border-slate-200/80 shadow-2xs'
                 }`}
               >
                 {/* Column Day Header */}
                 <div className={`p-3.5 border-b rounded-t-2xl ${
-                  isToday ? 'bg-amber-50/70 border-amber-200' : 'bg-gray-50/70 border-gray-100'
+                  isToday ? 'bg-indigo-50/80 border-indigo-100' : 'bg-slate-50/80 border-slate-100'
                 }`}>
                   <div className="flex items-center justify-between">
-                    <span className="font-bold text-xs text-gray-900 flex items-center gap-1.5">
+                    <span className="font-bold text-xs text-slate-900 flex items-center gap-1.5">
                       {day.label}
                       {isToday && (
-                        <span className="text-[9px] bg-[#b38e44] text-white px-1.5 py-0.2 rounded font-bold">
+                        <span className="text-[9px] bg-indigo-600 text-white px-1.5 py-0.2 rounded font-bold">
                           HOJE
                         </span>
                       )}
                     </span>
-                    <span className="text-[10px] font-mono font-medium text-gray-500">
+                    <span className="text-[10px] font-mono font-medium text-slate-500">
                       {formatMinutes(totalMins)}
                     </span>
                   </div>
 
-                  <div className="flex items-center justify-between mt-2 text-[10px] text-gray-500">
+                  <div className="flex items-center justify-between mt-2 text-[10px] text-slate-500">
                     <span>{dayGoals.length} meta(s)</span>
-                    <span className="font-semibold text-gray-700">
+                    <span className="font-semibold text-slate-700">
                       {completedCount}/{dayGoals.length} concluídas
                     </span>
                   </div>
@@ -217,14 +217,14 @@ export const WeeklyGoalsView: React.FC = () => {
                 {/* Goals Cards List inside Day Column */}
                 <div className="p-2.5 flex-1 space-y-2.5 min-h-[220px]">
                   {dayGoals.length === 0 ? (
-                    <div className="h-full flex flex-col items-center justify-center text-center p-4 text-gray-400">
+                    <div className="h-full flex flex-col items-center justify-center text-center p-4 text-slate-400">
                       <p className="text-[11px]">Nenhuma meta</p>
                       <button
                         onClick={() => {
                           setNewDay(day.key);
                           setShowAddModal(true);
                         }}
-                        className="mt-2 text-[10px] text-[#b38e44] font-bold hover:underline"
+                        className="mt-2 text-[10px] text-indigo-600 font-bold hover:underline"
                       >
                         + Adicionar
                       </button>
@@ -238,36 +238,36 @@ export const WeeklyGoalsView: React.FC = () => {
                         <div
                           key={goal.id}
                           onClick={() => setSelectedGoalForModal(goal)}
-                          className={`p-3 rounded-xl border text-xs cursor-pointer transition-all hover:shadow-md relative group ${
+                          className={`p-3 rounded-xl border text-xs cursor-pointer transition-all hover:shadow-xs relative group ${
                             isCompleted
-                              ? 'bg-[#0f462c] text-white border-transparent'
-                              : 'bg-white text-gray-800 border-gray-200 hover:border-[#b38e44]/50'
+                              ? 'bg-emerald-50 text-emerald-950 border-emerald-200/90 shadow-2xs hover:bg-emerald-100/80'
+                              : 'bg-white text-slate-800 border-slate-200 hover:border-indigo-300'
                           }`}
                         >
                           <div className="flex items-start justify-between gap-1">
                             <span className={`text-[10px] font-bold px-1.5 py-0.5 rounded ${
-                              isCompleted ? 'bg-white/20 text-white' : 'bg-gray-100 text-gray-700'
+                              isCompleted ? 'bg-emerald-100 text-emerald-800' : 'bg-slate-100 text-slate-700'
                             }`}>
                               {sub?.code || 'DISC'}
                             </span>
                             <span className={`text-[10px] font-mono font-bold ${
-                              isCompleted ? 'text-emerald-100' : 'text-gray-500'
+                              isCompleted ? 'text-emerald-800' : 'text-slate-500'
                             }`}>
                               {formatMinutes(goal.targetDurationMinutes)}
                             </span>
                           </div>
 
                           <p className={`font-semibold mt-1.5 line-clamp-2 ${
-                            isCompleted ? 'text-white' : 'text-gray-900'
+                            isCompleted ? 'text-emerald-900 font-bold' : 'text-slate-900'
                           }`}>
                             {goal.topicTitle}
                           </p>
 
                           {/* Completed stats tag */}
                           {isCompleted ? (
-                            <div className="mt-2 pt-2 border-t border-white/20 flex items-center justify-between text-[10px] text-emerald-100">
+                            <div className="mt-2 pt-2 border-t border-emerald-200/60 flex items-center justify-between text-[10px] text-emerald-700">
                               <span className="flex items-center gap-1 font-semibold">
-                                <CheckCircle2 className="w-3 h-3 text-emerald-300" />
+                                <CheckCircle2 className="w-3 h-3 text-emerald-600" />
                                 {goal.questionsCorrect !== undefined && (
                                   <span>{goal.questionsCorrect}C / {goal.questionsWrong}E</span>
                                 )}
@@ -275,12 +275,12 @@ export const WeeklyGoalsView: React.FC = () => {
                               <span>{goal.difficulty || 'Feito'}</span>
                             </div>
                           ) : (
-                            <div className="mt-2 flex items-center justify-between text-[10px] text-gray-400">
+                            <div className="mt-2 flex items-center justify-between text-[10px] text-slate-400">
                               <span className="flex items-center gap-1">
                                 <Circle className="w-2.5 h-2.5" />
                                 Pendente
                               </span>
-                              <span className="text-gray-400 font-semibold group-hover:text-[#b38e44]">
+                              <span className="text-slate-400 font-semibold group-hover:text-indigo-600">
                                 Preencher →
                               </span>
                             </div>
@@ -320,12 +320,12 @@ export const WeeklyGoalsView: React.FC = () => {
                 onClick={() => setSelectedDay(day.key)}
                 className={`px-4 py-2.5 rounded-xl text-xs font-bold transition flex items-center gap-2 whitespace-nowrap ${
                   selectedDay === day.key
-                    ? 'bg-gradient-to-r from-[#b38e44] to-[#96742e] text-white shadow-sm'
-                    : 'bg-white text-gray-700 border border-gray-200 hover:bg-gray-50'
+                    ? 'bg-indigo-600 text-white shadow-xs'
+                    : 'bg-white text-slate-700 border border-slate-200 hover:bg-slate-50'
                 }`}
               >
                 <span>{day.fullLabel}</span>
-                <span className="text-[10px] px-1.5 py-0.5 rounded-full bg-black/10">
+                <span className={`text-[10px] px-1.5 py-0.5 rounded-full ${selectedDay === day.key ? 'bg-white/20 text-white' : 'bg-slate-100 text-slate-600'}`}>
                   {goals.filter(g => g.dayOfWeek === day.key).length}
                 </span>
               </button>
@@ -333,13 +333,13 @@ export const WeeklyGoalsView: React.FC = () => {
           </div>
 
           {/* Daily Goals detailed cards */}
-          <div className="bg-white rounded-2xl p-6 border border-gray-200/80 shadow-sm space-y-4">
-            <div className="flex items-center justify-between pb-4 border-b border-gray-100">
+          <div className="bg-white rounded-2xl p-6 border border-slate-200/80 shadow-xs space-y-4">
+            <div className="flex items-center justify-between pb-4 border-b border-slate-100">
               <div>
-                <h3 className="font-bold text-gray-900 text-base">
+                <h3 className="font-bold text-slate-900 text-base">
                   Metas para {daysConfig.find(d => d.key === selectedDay)?.fullLabel}
                 </h3>
-                <p className="text-xs text-gray-500 mt-0.5">
+                <p className="text-xs text-slate-500 mt-0.5">
                   Clique em qualquer meta para registrar o tempo estudado, questões certas/erradas e nível de dificuldade
                 </p>
               </div>
@@ -349,7 +349,7 @@ export const WeeklyGoalsView: React.FC = () => {
                   setNewDay(selectedDay);
                   setShowAddModal(true);
                 }}
-                className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-bold text-white bg-[#b38e44] hover:bg-[#96742e] rounded-lg transition"
+                className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-bold text-white bg-indigo-600 hover:bg-indigo-700 rounded-lg transition"
               >
                 <Plus className="w-3.5 h-3.5" />
                 <span>Adicionar Meta</span>
@@ -358,10 +358,10 @@ export const WeeklyGoalsView: React.FC = () => {
 
             <div className="space-y-3">
               {filteredGoals.filter(g => g.dayOfWeek === selectedDay).length === 0 ? (
-                <div className="text-center py-12 text-gray-400">
-                  <Calendar className="w-10 h-10 mx-auto text-gray-300 mb-2" />
-                  <p className="font-semibold text-gray-700 text-sm">Nenhuma meta programada para este dia</p>
-                  <p className="text-xs text-gray-400 mt-1">Clique no botão acima para adicionar sua primeira meta de estudo.</p>
+                <div className="text-center py-12 text-slate-400">
+                  <Calendar className="w-10 h-10 mx-auto text-slate-300 mb-2" />
+                  <p className="font-semibold text-slate-700 text-sm">Nenhuma meta programada para este dia</p>
+                  <p className="text-xs text-slate-400 mt-1">Clique no botão acima para adicionar sua primeira meta de estudo.</p>
                 </div>
               ) : (
                 filteredGoals.filter(g => g.dayOfWeek === selectedDay).map((goal) => {
@@ -374,20 +374,20 @@ export const WeeklyGoalsView: React.FC = () => {
                       className={`p-4 rounded-xl border transition-all flex flex-col md:flex-row md:items-center justify-between gap-4 ${
                         isCompleted
                           ? 'bg-emerald-50/70 border-emerald-200'
-                          : 'bg-white border-gray-200 hover:border-gray-300'
+                          : 'bg-white border-slate-200 hover:border-slate-300'
                       }`}
                     >
                       <div className="space-y-1">
                         <div className="flex items-center gap-2">
-                          <span className="text-xs font-bold px-2 py-0.5 rounded bg-gray-100 text-gray-800">
+                          <span className="text-xs font-bold px-2 py-0.5 rounded bg-slate-100 text-slate-800">
                             {sub?.code} - {sub?.name}
                           </span>
-                          <span className="text-xs font-mono font-bold text-gray-600 flex items-center gap-1">
-                            <Clock className="w-3.5 h-3.5 text-gray-400" />
+                          <span className="text-xs font-mono font-bold text-slate-600 flex items-center gap-1">
+                            <Clock className="w-3.5 h-3.5 text-slate-400" />
                             {formatMinutes(goal.targetDurationMinutes)}
                           </span>
                         </div>
-                        <h4 className="text-sm font-bold text-gray-900">{goal.topicTitle}</h4>
+                        <h4 className="text-sm font-bold text-slate-900">{goal.topicTitle}</h4>
 
                         {isCompleted && (
                           <div className="flex flex-wrap items-center gap-2 text-xs pt-1">
@@ -407,7 +407,7 @@ export const WeeklyGoalsView: React.FC = () => {
                           </div>
                         )}
                         {goal.notes && (
-                          <p className="text-xs text-gray-500 italic mt-1">"{goal.notes}"</p>
+                          <p className="text-xs text-slate-500 italic mt-1">"{goal.notes}"</p>
                         )}
                       </div>
 
@@ -422,7 +422,7 @@ export const WeeklyGoalsView: React.FC = () => {
                             </button>
                             <button
                               onClick={() => resetGoal(goal.id)}
-                              className="p-1.5 text-gray-400 hover:text-gray-700 rounded-lg hover:bg-gray-100 transition"
+                              className="p-1.5 text-slate-400 hover:text-slate-700 rounded-lg hover:bg-slate-100 transition"
                               title="Marcar como pendente novamente"
                             >
                               <RotateCcw className="w-4 h-4" />
@@ -431,7 +431,7 @@ export const WeeklyGoalsView: React.FC = () => {
                         ) : (
                           <button
                             onClick={() => setSelectedGoalForModal(goal)}
-                            className="px-4 py-2 rounded-xl text-xs font-bold bg-[#b38e44] text-white hover:bg-[#96742e] shadow-sm transition"
+                            className="px-4 py-2 rounded-xl text-xs font-bold bg-indigo-600 text-white hover:bg-indigo-700 shadow-xs transition"
                           >
                             Registrar & Concluir
                           </button>
@@ -439,7 +439,7 @@ export const WeeklyGoalsView: React.FC = () => {
 
                         <button
                           onClick={() => deleteGoal(goal.id)}
-                          className="p-1.5 text-gray-400 hover:text-red-600 rounded-lg hover:bg-red-50 transition"
+                          className="p-1.5 text-slate-400 hover:text-rose-600 rounded-lg hover:bg-rose-50 transition"
                           title="Excluir meta"
                         >
                           <Trash2 className="w-4 h-4" />
@@ -456,22 +456,22 @@ export const WeeklyGoalsView: React.FC = () => {
 
       {/* Modal: Nova Meta de Estudo */}
       {showAddModal && (
-        <div className="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm flex items-center justify-center p-4">
-          <div className="bg-white rounded-2xl shadow-xl border border-gray-100 w-full max-w-md p-6">
-            <h3 className="text-lg font-bold text-gray-900 mb-1">Adicionar Nova Meta de Estudo</h3>
-            <p className="text-xs text-gray-500 mb-4">
+        <div className="fixed inset-0 z-50 bg-slate-900/40 backdrop-blur-xs flex items-center justify-center p-4">
+          <div className="bg-white rounded-2xl shadow-xl border border-slate-200/90 w-full max-w-md p-6">
+            <h3 className="text-lg font-bold text-slate-900 mb-1">Adicionar Nova Meta de Estudo</h3>
+            <p className="text-xs text-slate-500 mb-4">
               Defina a matéria, o assunto específico e o tempo planejado.
             </p>
 
             <form onSubmit={handleCreateGoal} className="space-y-4">
               <div>
-                <label className="block text-xs font-bold text-gray-700 uppercase mb-1">
+                <label className="block text-xs font-bold text-slate-700 uppercase mb-1">
                   Disciplina
                 </label>
                 <select
                   value={newSubjectId}
                   onChange={(e) => setNewSubjectId(e.target.value)}
-                  className="w-full text-xs p-2.5 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#b38e44]"
+                  className="w-full text-xs p-2.5 rounded-lg border border-slate-300 focus:outline-none focus:ring-2 focus:ring-indigo-500"
                 >
                   {subjects.map(s => (
                     <option key={s.id} value={s.id}>
@@ -482,7 +482,7 @@ export const WeeklyGoalsView: React.FC = () => {
               </div>
 
               <div>
-                <label className="block text-xs font-bold text-gray-700 uppercase mb-1">
+                <label className="block text-xs font-bold text-slate-700 uppercase mb-1">
                   Assunto / Tema da Meta
                 </label>
                 <input
@@ -491,19 +491,19 @@ export const WeeklyGoalsView: React.FC = () => {
                   value={newTopic}
                   onChange={(e) => setNewTopic(e.target.value)}
                   placeholder="Ex: Teoria de Atos Administrativos e 20 questões"
-                  className="w-full text-xs p-2.5 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#b38e44]"
+                  className="w-full text-xs p-2.5 rounded-lg border border-slate-300 focus:outline-none focus:ring-2 focus:ring-indigo-500"
                 />
               </div>
 
               <div className="grid grid-cols-2 gap-3">
                 <div>
-                  <label className="block text-xs font-bold text-gray-700 uppercase mb-1">
+                  <label className="block text-xs font-bold text-slate-700 uppercase mb-1">
                     Dia da Semana
                   </label>
                   <select
                     value={newDay}
                     onChange={(e) => setNewDay(e.target.value as DayOfWeek)}
-                    className="w-full text-xs p-2.5 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#b38e44]"
+                    className="w-full text-xs p-2.5 rounded-lg border border-slate-300 focus:outline-none focus:ring-2 focus:ring-indigo-500"
                   >
                     {daysConfig.map(d => (
                       <option key={d.key} value={d.key}>{d.fullLabel}</option>
@@ -512,13 +512,13 @@ export const WeeklyGoalsView: React.FC = () => {
                 </div>
 
                 <div>
-                  <label className="block text-xs font-bold text-gray-700 uppercase mb-1">
+                  <label className="block text-xs font-bold text-slate-700 uppercase mb-1">
                     Duração Planejada
                   </label>
                   <select
                     value={newDuration}
                     onChange={(e) => setNewDuration(Number(e.target.value))}
-                    className="w-full text-xs p-2.5 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#b38e44]"
+                    className="w-full text-xs p-2.5 rounded-lg border border-slate-300 focus:outline-none focus:ring-2 focus:ring-indigo-500"
                   >
                     <option value={30}>30 min (00:30:00)</option>
                     <option value={45}>45 min (00:45:00)</option>
@@ -529,17 +529,17 @@ export const WeeklyGoalsView: React.FC = () => {
                 </div>
               </div>
 
-              <div className="flex items-center justify-end gap-2 pt-4 border-t border-gray-100">
+              <div className="flex items-center justify-end gap-2 pt-4 border-t border-slate-100">
                 <button
                   type="button"
                   onClick={() => setShowAddModal(false)}
-                  className="px-4 py-2 text-xs font-semibold text-gray-600 hover:text-gray-900"
+                  className="px-4 py-2 text-xs font-semibold text-slate-600 hover:text-slate-900"
                 >
                   Cancelar
                 </button>
                 <button
                   type="submit"
-                  className="px-5 py-2 text-xs font-bold text-white bg-[#b38e44] hover:bg-[#96742e] rounded-xl shadow-sm transition"
+                  className="px-5 py-2 text-xs font-bold text-white bg-indigo-600 hover:bg-indigo-700 rounded-xl shadow-xs transition"
                 >
                   Criar Meta
                 </button>

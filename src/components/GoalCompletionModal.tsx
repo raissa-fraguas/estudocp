@@ -135,28 +135,28 @@ export const GoalCompletionModal: React.FC = () => {
   ];
 
   return (
-    <div className="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm flex items-center justify-center p-4 overflow-y-auto">
-      <div className="bg-white rounded-2xl shadow-2xl border border-gray-100 w-full max-w-xl overflow-hidden my-8 animate-in fade-in zoom-in-95 duration-200">
+    <div className="fixed inset-0 z-50 bg-slate-900/40 backdrop-blur-xs flex items-center justify-center p-4 overflow-y-auto">
+      <div className="bg-white rounded-2xl shadow-xl border border-slate-200/90 w-full max-w-xl overflow-hidden my-8 animate-in fade-in zoom-in-95 duration-200">
         {/* Modal Header */}
-        <div className="p-5 bg-gradient-to-r from-gray-900 to-[#1e2329] text-white flex items-start justify-between">
+        <div className="p-5 bg-gradient-to-r from-indigo-50/80 via-white to-violet-50/80 border-b border-slate-100 text-slate-900 flex items-start justify-between">
           <div>
             <div className="flex items-center gap-2">
-              <span className="text-xs font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-[#b38e44] text-white">
+              <span className="text-xs font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-indigo-100 text-indigo-700">
                 {subject?.code || 'DISC'}
               </span>
-              <span className="text-xs text-gray-300 font-medium">{subject?.name}</span>
+              <span className="text-xs text-slate-600 font-medium">{subject?.name}</span>
             </div>
-            <h3 className="text-base sm:text-lg font-bold text-white mt-1.5">
+            <h3 className="text-base sm:text-lg font-bold text-slate-900 mt-1.5">
               {goal.topicTitle}
             </h3>
-            <p className="text-xs text-gray-400 mt-0.5">
+            <p className="text-xs text-slate-500 mt-0.5">
               Preencha o resultado do seu estudo para atualizar seus gráficos e métricas
             </p>
           </div>
 
           <button
             onClick={() => setSelectedGoalForModal(null)}
-            className="p-1.5 text-gray-400 hover:text-white rounded-lg hover:bg-white/10 transition"
+            className="p-1.5 text-slate-400 hover:text-slate-700 rounded-lg hover:bg-slate-100 transition"
           >
             <X className="w-5 h-5" />
           </button>
@@ -167,8 +167,8 @@ export const GoalCompletionModal: React.FC = () => {
           {/* Section 1: Study Time with stopwatch option */}
           <div className="bg-gray-50 border border-gray-200/80 rounded-xl p-4">
             <div className="flex items-center justify-between mb-3">
-              <label className="text-xs font-bold text-gray-800 uppercase tracking-wider flex items-center gap-1.5">
-                <Clock className="w-4 h-4 text-[#b38e44]" />
+              <label className="text-xs font-bold text-slate-800 uppercase tracking-wider flex items-center gap-1.5">
+                <Clock className="w-4 h-4 text-indigo-600" />
                 Tempo de Estudo Real
               </label>
 
@@ -193,7 +193,7 @@ export const GoalCompletionModal: React.FC = () => {
                     setTimerSeconds(0);
                     setActualMinutes(0);
                   }}
-                  className="p-1 text-gray-400 hover:text-gray-600 rounded"
+                  className="p-1 text-slate-400 hover:text-slate-600 rounded"
                   title="Zerar"
                 >
                   <RotateCcw className="w-3 h-3" />
@@ -203,10 +203,10 @@ export const GoalCompletionModal: React.FC = () => {
 
             <div className="grid grid-cols-2 gap-4 items-center">
               <div>
-                <div className="text-2xl font-bold font-mono text-gray-900">
+                <div className="text-2xl font-bold font-mono text-slate-900">
                   {formatTimerDisplay(timerSeconds)}
                 </div>
-                <span className="text-[10px] text-gray-500">Cronômetro em tempo real</span>
+                <span className="text-[10px] text-slate-500">Cronômetro em tempo real</span>
               </div>
 
               <div>
@@ -221,19 +221,19 @@ export const GoalCompletionModal: React.FC = () => {
                       setActualMinutes(val);
                       setTimerSeconds(val * 60);
                     }}
-                    className="w-20 px-2.5 py-1.5 border border-gray-300 rounded-lg text-sm font-bold text-center focus:outline-none focus:ring-2 focus:ring-[#b38e44]"
+                    className="w-20 px-2.5 py-1.5 border border-slate-300 rounded-lg text-sm font-bold text-center focus:outline-none focus:ring-2 focus:ring-indigo-500"
                   />
-                  <span className="text-xs font-medium text-gray-600">minutos estudados</span>
+                  <span className="text-xs font-medium text-slate-600">minutos estudados</span>
                 </div>
               </div>
             </div>
           </div>
 
           {/* Section 2: Questions Solved (Certas & Erradas) */}
-          <div className="bg-gray-50 border border-gray-200/80 rounded-xl p-4">
+          <div className="bg-slate-50 border border-slate-200/80 rounded-xl p-4">
             <div className="flex items-center justify-between mb-3">
-              <label className="text-xs font-bold text-gray-800 uppercase tracking-wider flex items-center gap-1.5">
-                <HelpCircle className="w-4 h-4 text-[#b38e44]" />
+              <label className="text-xs font-bold text-slate-800 uppercase tracking-wider flex items-center gap-1.5">
+                <HelpCircle className="w-4 h-4 text-indigo-600" />
                 Questões Resolvidas Nesta Sessão
               </label>
 
@@ -332,8 +332,8 @@ export const GoalCompletionModal: React.FC = () => {
                   onClick={() => setDifficulty(lvl)}
                   className={`py-2 px-1 text-xs font-semibold rounded-lg border text-center transition-all ${
                     difficulty === lvl
-                      ? 'bg-[#b38e44] text-white border-[#b38e44] shadow-sm'
-                      : 'bg-white text-gray-700 border-gray-200 hover:bg-gray-50'
+                      ? 'bg-indigo-600 text-white border-indigo-600 shadow-xs'
+                      : 'bg-white text-slate-700 border-slate-200 hover:bg-slate-50'
                   }`}
                 >
                   {lvl}
@@ -344,7 +344,7 @@ export const GoalCompletionModal: React.FC = () => {
 
           {/* Section 4: Anotações da Meta */}
           <div>
-            <label className="block text-xs font-bold text-gray-800 uppercase tracking-wider mb-1.5">
+            <label className="block text-xs font-bold text-slate-800 uppercase tracking-wider mb-1.5">
               Anotações / Pontos de Destaque
             </label>
             <textarea
@@ -352,7 +352,7 @@ export const GoalCompletionModal: React.FC = () => {
               value={notes}
               onChange={(e) => setNotes(e.target.value)}
               placeholder="Ex: Artigo importante para ler novamente, mnemônico gravado, etc."
-              className="w-full text-xs p-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#b38e44]"
+              className="w-full text-xs p-3 rounded-lg border border-slate-300 focus:outline-none focus:ring-2 focus:ring-indigo-500"
             />
           </div>
 
@@ -479,7 +479,7 @@ export const GoalCompletionModal: React.FC = () => {
           <button
             type="button"
             onClick={handleSave}
-            className="flex items-center gap-2 px-5 py-2.5 rounded-xl bg-gradient-to-r from-[#b38e44] to-[#96742e] text-white text-xs font-bold hover:shadow-lg hover:shadow-[#b38e44]/25 transition"
+            className="flex items-center gap-2 px-5 py-2.5 rounded-xl bg-gradient-to-r from-indigo-600 to-violet-600 hover:from-indigo-700 hover:to-violet-700 text-white text-xs font-bold shadow-xs transition"
           >
             <CheckCircle2 className="w-4 h-4" />
             <span>Concluir & Salvar Meta</span>

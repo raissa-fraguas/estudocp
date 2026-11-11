@@ -25,7 +25,7 @@ export const DisciplinesView: React.FC = () => {
   const [code, setCode] = useState<string>('');
   const [weeklyTargetHours, setWeeklyTargetHours] = useState<number>(4);
   const [weight, setWeight] = useState<number>(2);
-  const [color, setColor] = useState<string>('#b38e44');
+  const [color, setColor] = useState<string>('#4f46e5');
 
   // Topic add state
   const [expandedSubjectId, setExpandedSubjectId] = useState<string | null>(null);
@@ -34,8 +34,8 @@ export const DisciplinesView: React.FC = () => {
   const totalWeeklyHours = subjects.reduce((acc, s) => acc + s.weeklyTargetHours, 0);
 
   const colors = [
-    '#b38e44', '#0f766e', '#15803d', '#2563eb', '#7c3aed', 
-    '#ea580c', '#e11d48', '#4f46e5', '#0891b2', '#059669'
+    '#4f46e5', '#0284c7', '#059669', '#2563eb', '#7c3aed', 
+    '#ea580c', '#e11d48', '#0d9488', '#d97706', '#ec4899'
   ];
 
   const handleOpenAdd = () => {
@@ -44,7 +44,7 @@ export const DisciplinesView: React.FC = () => {
     setCode('');
     setWeeklyTargetHours(4);
     setWeight(2);
-    setColor('#b38e44');
+    setColor('#4f46e5');
     setShowAddModal(true);
   };
 
@@ -107,7 +107,7 @@ export const DisciplinesView: React.FC = () => {
 
         <button
           onClick={handleOpenAdd}
-          className="flex items-center gap-1.5 px-4 py-2 text-xs font-bold text-white bg-gradient-to-r from-[#b38e44] to-[#96742e] rounded-xl shadow-sm hover:shadow-md transition"
+          className="flex items-center gap-1.5 px-4 py-2 text-xs font-bold text-white bg-indigo-600 hover:bg-indigo-700 rounded-xl shadow-xs transition"
         >
           <Plus className="w-4 h-4" />
           <span>Nova Disciplina</span>
@@ -115,18 +115,18 @@ export const DisciplinesView: React.FC = () => {
       </div>
 
       {/* Carga Horária Semanal Distribution Summary */}
-      <div className="bg-white rounded-2xl p-6 border border-gray-100 shadow-sm">
-        <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-4 border-b border-gray-100">
+      <div className="bg-white rounded-2xl p-6 border border-slate-200/80 shadow-xs">
+        <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-4 border-b border-slate-100">
           <div>
-            <span className="text-xs font-bold text-gray-700 uppercase tracking-wider flex items-center gap-1.5">
-              <Clock className="w-4 h-4 text-[#b38e44]" />
+            <span className="text-xs font-bold text-slate-700 uppercase tracking-wider flex items-center gap-1.5">
+              <Clock className="w-4 h-4 text-indigo-600" />
               Carga Horária Semanal Total Planejada
             </span>
             <div className="flex items-baseline gap-2 mt-1">
-              <span className="text-3xl font-extrabold text-gray-900 font-mono">
+              <span className="text-3xl font-extrabold text-slate-900 font-mono">
                 {totalWeeklyHours}h
               </span>
-              <span className="text-xs text-gray-500">distribuídas em {subjects.length} disciplinas</span>
+              <span className="text-xs text-slate-500">distribuídas em {subjects.length} disciplinas</span>
             </div>
           </div>
 
@@ -278,22 +278,22 @@ export const DisciplinesView: React.FC = () => {
                     <Layers className="w-3.5 h-3.5 text-gray-500" />
                     Gerenciar Tópicos do Edital ({totalTopics})
                   </span>
-                  <span className="text-xs text-[#b38e44] font-bold">
+                  <span className="text-xs text-indigo-600 font-bold">
                     {isExpanded ? 'Recolher' : 'Expandir'}
                   </span>
                 </button>
 
                 {isExpanded && (
-                  <div className="mt-3 pt-3 border-t border-gray-200/80 space-y-2 text-xs">
+                  <div className="mt-3 pt-3 border-t border-slate-200/80 space-y-2 text-xs">
                     <div className="max-h-48 overflow-y-auto space-y-1.5 pr-1">
                       {sub.topics.map((topic) => (
-                        <div key={topic.id} className="flex items-center justify-between p-2 rounded bg-white border border-gray-200">
-                          <span className={`text-[11px] truncate pr-2 ${topic.completed ? 'line-through text-gray-400' : 'text-gray-800'}`}>
+                        <div key={topic.id} className="flex items-center justify-between p-2 rounded bg-white border border-slate-200">
+                          <span className={`text-[11px] truncate pr-2 ${topic.completed ? 'line-through text-slate-400' : 'text-slate-800'}`}>
                             {topic.title}
                           </span>
                           <button
                             onClick={() => deleteTopic(sub.id, topic.id)}
-                            className="text-gray-400 hover:text-red-600 p-0.5"
+                            className="text-slate-400 hover:text-rose-600 p-0.5"
                           >
                             <Trash2 className="w-3 h-3" />
                           </button>
@@ -313,12 +313,12 @@ export const DisciplinesView: React.FC = () => {
                             handleAddTopicToSubject(sub.id);
                           }
                         }}
-                        className="flex-1 text-xs p-1.5 bg-white border border-gray-300 rounded"
+                        className="flex-1 text-xs p-1.5 bg-white border border-slate-300 rounded focus:ring-1 focus:ring-indigo-500"
                       />
                       <button
                         type="button"
                         onClick={() => handleAddTopicToSubject(sub.id)}
-                        className="px-2.5 py-1.5 bg-[#b38e44] text-white rounded text-xs font-bold hover:bg-[#96742e]"
+                        className="px-2.5 py-1.5 bg-indigo-600 text-white rounded text-xs font-bold hover:bg-indigo-700"
                       >
                         +
                       </button>
@@ -333,43 +333,43 @@ export const DisciplinesView: React.FC = () => {
 
       {/* Modal: Adicionar / Editar Disciplina */}
       {showAddModal && (
-        <div className="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm flex items-center justify-center p-4">
-          <div className="bg-white rounded-2xl shadow-xl border border-gray-100 w-full max-w-md p-6">
-            <h3 className="text-lg font-bold text-gray-900 mb-1">
+        <div className="fixed inset-0 z-50 bg-slate-900/40 backdrop-blur-xs flex items-center justify-center p-4">
+          <div className="bg-white rounded-2xl shadow-xl border border-slate-200/90 w-full max-w-md p-6">
+            <h3 className="text-lg font-bold text-slate-900 mb-1">
               {editingSubject ? 'Editar Disciplina' : 'Nova Disciplina do Concurso'}
             </h3>
-            <p className="text-xs text-gray-500 mb-4">
+            <p className="text-xs text-slate-500 mb-4">
               Informe os dados da matéria para balancear sua carga horária semanal.
             </p>
 
             <form onSubmit={handleSubmit} className="space-y-4">
               <div>
-                <label className="block text-xs font-bold text-gray-700 uppercase mb-1">Nome da Disciplina</label>
+                <label className="block text-xs font-bold text-slate-700 uppercase mb-1">Nome da Disciplina</label>
                 <input
                   type="text"
                   required
                   value={name}
                   onChange={(e) => setName(e.target.value)}
                   placeholder="Ex: Direito Previdenciário"
-                  className="w-full text-xs p-2.5 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#b38e44]"
+                  className="w-full text-xs p-2.5 rounded-lg border border-slate-300 focus:outline-none focus:ring-2 focus:ring-indigo-500"
                 />
               </div>
 
               <div>
-                <label className="block text-xs font-bold text-gray-700 uppercase mb-1">Sigla / Código Curto</label>
+                <label className="block text-xs font-bold text-slate-700 uppercase mb-1">Sigla / Código Curto</label>
                 <input
                   type="text"
                   required
                   value={code}
                   onChange={(e) => setCode(e.target.value.toUpperCase())}
                   placeholder="Ex: CES.INSS.TS ou DPV"
-                  className="w-full text-xs p-2.5 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#b38e44]"
+                  className="w-full text-xs p-2.5 rounded-lg border border-slate-300 focus:outline-none focus:ring-2 focus:ring-indigo-500"
                 />
               </div>
 
               <div className="grid grid-cols-2 gap-3">
                 <div>
-                  <label className="block text-xs font-bold text-gray-700 uppercase mb-1">Horas Semanais</label>
+                  <label className="block text-xs font-bold text-slate-700 uppercase mb-1">Horas Semanais</label>
                   <input
                     type="number"
                     min="1"
@@ -377,16 +377,16 @@ export const DisciplinesView: React.FC = () => {
                     required
                     value={weeklyTargetHours}
                     onChange={(e) => setWeeklyTargetHours(parseInt(e.target.value) || 1)}
-                    className="w-full text-xs p-2.5 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#b38e44]"
+                    className="w-full text-xs p-2.5 rounded-lg border border-slate-300 focus:outline-none focus:ring-2 focus:ring-indigo-500"
                   />
                 </div>
 
                 <div>
-                  <label className="block text-xs font-bold text-gray-700 uppercase mb-1">Peso na Prova</label>
+                  <label className="block text-xs font-bold text-slate-700 uppercase mb-1">Peso na Prova</label>
                   <select
                     value={weight}
                     onChange={(e) => setWeight(parseInt(e.target.value) || 1)}
-                    className="w-full text-xs p-2.5 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#b38e44]"
+                    className="w-full text-xs p-2.5 rounded-lg border border-slate-300 focus:outline-none focus:ring-2 focus:ring-indigo-500"
                   >
                     <option value={1}>Peso 1 (Básica)</option>
                     <option value={2}>Peso 2 (Intermediária)</option>
@@ -397,7 +397,7 @@ export const DisciplinesView: React.FC = () => {
               </div>
 
               <div>
-                <label className="block text-xs font-bold text-gray-700 uppercase mb-1.5">Cor de Identificação</label>
+                <label className="block text-xs font-bold text-slate-700 uppercase mb-1.5">Cor de Identificação</label>
                 <div className="flex items-center gap-2 flex-wrap">
                   {colors.map(c => (
                     <button
@@ -406,24 +406,24 @@ export const DisciplinesView: React.FC = () => {
                       onClick={() => setColor(c)}
                       style={{ backgroundColor: c }}
                       className={`w-7 h-7 rounded-full border-2 transition ${
-                        color === c ? 'border-gray-900 scale-110 shadow-sm' : 'border-transparent hover:scale-105'
+                        color === c ? 'border-slate-900 scale-110 shadow-xs' : 'border-transparent hover:scale-105'
                       }`}
                     />
                   ))}
                 </div>
               </div>
 
-              <div className="flex items-center justify-end gap-2 pt-4 border-t border-gray-100">
+              <div className="flex items-center justify-end gap-2 pt-4 border-t border-slate-100">
                 <button
                   type="button"
                   onClick={() => setShowAddModal(false)}
-                  className="px-4 py-2 text-xs font-semibold text-gray-600 hover:text-gray-900"
+                  className="px-4 py-2 text-xs font-semibold text-slate-600 hover:text-slate-900"
                 >
                   Cancelar
                 </button>
                 <button
                   type="submit"
-                  className="px-5 py-2 text-xs font-bold text-white bg-[#b38e44] hover:bg-[#96742e] rounded-xl shadow-sm transition"
+                  className="px-5 py-2 text-xs font-bold text-white bg-indigo-600 hover:bg-indigo-700 rounded-xl shadow-xs transition"
                 >
                   {editingSubject ? 'Salvar Alterações' : 'Cadastrar Disciplina'}
                 </button>

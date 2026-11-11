@@ -51,7 +51,7 @@ export const SettingsView: React.FC = () => {
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div>
               <label className="block text-xs font-bold text-gray-700 uppercase mb-1 flex items-center gap-1.5">
-                <User className="w-3.5 h-3.5 text-[#b38e44]" />
+                <User className="w-3.5 h-3.5 text-indigo-600" />
                 Seu Nome Completo
               </label>
               <input
@@ -59,13 +59,13 @@ export const SettingsView: React.FC = () => {
                 required
                 value={studentName}
                 onChange={(e) => setStudentName(e.target.value)}
-                className="w-full text-xs p-2.5 rounded-xl border border-gray-300 focus:ring-2 focus:ring-[#b38e44]"
+                className="w-full text-xs p-2.5 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500"
               />
             </div>
 
             <div>
               <label className="block text-xs font-bold text-gray-700 uppercase mb-1 flex items-center gap-1.5">
-                <Award className="w-3.5 h-3.5 text-[#b38e44]" />
+                <Award className="w-3.5 h-3.5 text-indigo-600" />
                 Nome do Concurso / Cargo
               </label>
               <input
@@ -73,7 +73,7 @@ export const SettingsView: React.FC = () => {
                 required
                 value={examName}
                 onChange={(e) => setExamName(e.target.value)}
-                className="w-full text-xs p-2.5 rounded-xl border border-gray-300 focus:ring-2 focus:ring-[#b38e44]"
+                className="w-full text-xs p-2.5 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500"
               />
             </div>
           </div>
@@ -81,7 +81,7 @@ export const SettingsView: React.FC = () => {
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div>
               <label className="block text-xs font-bold text-gray-700 uppercase mb-1 flex items-center gap-1.5">
-                <Calendar className="w-3.5 h-3.5 text-[#b38e44]" />
+                <Calendar className="w-3.5 h-3.5 text-indigo-600" />
                 Data Prevista da Prova (Contagem Regressiva)
               </label>
               <input
@@ -89,13 +89,13 @@ export const SettingsView: React.FC = () => {
                 required
                 value={examDate}
                 onChange={(e) => setExamDate(e.target.value)}
-                className="w-full text-xs p-2.5 rounded-xl border border-gray-300 focus:ring-2 focus:ring-[#b38e44]"
+                className="w-full text-xs p-2.5 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500"
               />
             </div>
 
             <div>
               <label className="block text-xs font-bold text-gray-700 uppercase mb-1 flex items-center gap-1.5">
-                <Clock className="w-3.5 h-3.5 text-[#b38e44]" />
+                <Clock className="w-3.5 h-3.5 text-indigo-600" />
                 Meta de Estudo Semanal (Horas Líquidas)
               </label>
               <input
@@ -105,7 +105,7 @@ export const SettingsView: React.FC = () => {
                 required
                 value={weeklyTargetHours}
                 onChange={(e) => setWeeklyTargetHours(parseInt(e.target.value) || 20)}
-                className="w-full text-xs p-2.5 rounded-xl border border-gray-300 focus:ring-2 focus:ring-[#b38e44]"
+                className="w-full text-xs p-2.5 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500"
               />
             </div>
           </div>
@@ -129,7 +129,7 @@ export const SettingsView: React.FC = () => {
 
             <button
               type="submit"
-              className="flex items-center gap-1.5 px-5 py-2.5 text-xs font-bold text-white bg-gradient-to-r from-[#b38e44] to-[#96742e] rounded-xl shadow-sm hover:shadow-md transition"
+              className="flex items-center gap-1.5 px-5 py-2.5 text-xs font-bold text-white bg-gradient-to-r from-indigo-600 to-violet-600 hover:from-indigo-700 hover:to-violet-700 rounded-xl shadow-sm hover:shadow-md transition cursor-pointer"
             >
               <Save className="w-4 h-4" />
               <span>Salvar Alterações</span>
@@ -179,7 +179,7 @@ export const SettingsView: React.FC = () => {
                 a.click();
                 URL.revokeObjectURL(url);
               }}
-              className="px-3.5 py-2 text-xs font-bold bg-[#b38e44] text-white rounded-lg hover:bg-[#96742e] transition"
+              className="px-3.5 py-2 text-xs font-bold bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg shadow-xs hover:shadow-sm transition cursor-pointer"
             >
               Exportar Backup (.json)
             </button>

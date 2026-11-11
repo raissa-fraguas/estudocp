@@ -1,0 +1,6 @@
+{
+  "name": "ConcursoPro - Gestão e Metas de Estudos",
+  "description": "Sistema completo de cronogramas, metas diárias e semanais, gráficos de evolução e Caderno de Erros para concursos públicos.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
